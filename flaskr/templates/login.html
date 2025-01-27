@@ -6,86 +6,111 @@
 {% block content %}
 
 <div>
-    <div class="container" style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-        <form action="/login" method="POST">
-            <h1>Login</h1>
+    <div class="container">
+        <h1 style="margin-bottom: 20px; text-align: center;">Login</h1>
+        <form action="/login" method="post">
+            <!-- test inputs for login -->
             <div class="textboxdiv input">
-                <input type="text" name="username" placeholder="Username" required>
+                <input type="text" name="username" placeholder="Username">
             </div>
             <div class="textboxdiv input">
-                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="password" placeholder="Password">
             </div>
-            <input type="submit" value="login" class="loginbtn">
-            <div>
+            <!-- submit buton for login -->
+            <div class="submitbtn">
+                <input type="submit" value="login" class="loginbtn">
+            </div>
+            <!-- sign up info for login page -->
+            <div style="text-align: center; margin-top: 10px;">
                 <br>
-                <a href="/Sign-Up" style="color: #907AD6;">Don't have an account? Register</a>
+                <a href="/Sign-Up" style="color: #0098DB;">Don't have an account? Register</a>
             </div>
         </form>
     </div>
 </div>
 <script>
-    // Dark mode functionality
-    function toggleDarkMode() {
-        var elements = document.querySelectorAll('body, .sidebar, .content');
-        elements.forEach(element => {
-            element.classList.toggle("dark-mode");
+    // Form handling
+    const form = document.querySelector('form');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (form) {
+        form.addEventListener('input', () => {
+            const isValid = form.checkValidity();
+            if (submitBtn) {
+                submitBtn.disabled = !isValid;
+            }
         });
 
-        var logo = document.getElementById('logo');
-        if (elements[0].classList.contains("dark-mode")) {
-            localStorage.setItem("theme", "dark");
-            logo.src = "/static/original Logo white.png";
-        } else {
-            localStorage.setItem("theme", "light");
-            logo.src = "/static/original Logo.png";
-        }
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formAction = form.getAttribute('action');
+            const response = await fetch(formAction, {
+                method: 'POST',
+                body: new FormData(form)
+            });
+
+            if (!response.ok) {
+                const message = await response.text();
+                const overlay = document.createElement('div');
+                overlay.style.cssText = 'position:fixed; top:20px; left:50%; transform:translateX(-50%); background:rgba(255,0,0,0.8); color:white; padding:15px; border-radius:5px; z-index:1000;';
+                overlay.textContent = message;
+                document.body.appendChild(overlay);
+                setTimeout(() => overlay.remove(), 3000);
+            } else {
+                window.location.href = '/';
+            }
+        });
     }
 
-    // Form handling and dark mode initialization
-    window.onload = function() {
-        // Dark mode initialization
-        if (localStorage.getItem("theme") === "dark") {
-            var elements = document.querySelectorAll('body, .sidebar, .content');
-            elements.forEach(element => {
-                element.classList.add("dark-mode");
-            });
-            document.getElementById('logo').src = "/static/original Logo white.png";
-        }
-
-        // Form handling
-        const form = document.querySelector('form');
-        const submitBtn = document.getElementById('submitBtn');
-
-        if (form) {
-            form.addEventListener('input', () => {
-                const isValid = form.checkValidity();
-                if (submitBtn) {
-                    submitBtn.disabled = !isValid;
-                }
-            });
-
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const formAction = form.getAttribute('action');
-                const response = await fetch(formAction, {
-                    method: 'POST',
-                    body: new FormData(form)
-                });
-
-                if (!response.ok) {
-                    const message = await response.text();
-                    const overlay = document.createElement('div');
-                    overlay.style.cssText = 'position:fixed; top:20px; left:50%; transform:translateX(-50%); background:rgba(255,0,0,0.8); color:white; padding:15px; border-radius:5px; z-index:1000;';
-                    overlay.textContent = message;
-                    document.body.appendChild(overlay);
-                    setTimeout(() => overlay.remove(), 3000);
-                } else {
-                    window.location.href = '/';
-                }
-            });
-        }
-    }
 </script>
+<style>
+    .textboxdiv input {
+        text-align: center;
+        margin-top: 10px;
+        border: 3px solid #055dbc;
+        width: 100%;
+        padding: 10px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        outline: none;
+    }
+
+    .textboxdiv input:focus {
+        border: 3px solid #39B5E8;
+    }
+    .submitbtn {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1.2rem;
+        background-color: #055dbc;
+        color: white;
+        border: none;
+        margin-top: 50px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .submitbtn:hover {
+        background-color: #39B5E8;
+    }
+
+    .container {
+        background: linear-gradient(to top left, #055dbc74, #ffffff);
+        border: 3px solid #055dbcbb;
+        flex-direction: column;
+        width: 25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 45vh;
+        margin: auto;
+        margin-top: 1%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+</style>
 {% endblock %}
 
 </html>
