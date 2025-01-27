@@ -1,0 +1,8 @@
+.styles {
+  --lift-blue: #0081FE;
+  --white: #FFFFFF;
+  --dark: #0A142F;
+}
+.lift-blue { color: var(--lift-blue); }
+.white { color: var(--white); }
+.dark { color: var(--dark); }

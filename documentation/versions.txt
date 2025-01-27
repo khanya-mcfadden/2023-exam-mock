@@ -1,0 +1,13 @@
+24/2/2024
+verion 0 8:50
+added in basic flask set ups and pages (home login and sign up)
+
+version o.1 9:40
+finished importing other html pages, and added in pyhton backed code 
+
+version 0.2 11:43
+adding in footer and scroll functinality
+
+27/01/2025
+version 0.25
+compleated footer features and is fixing currant css 
