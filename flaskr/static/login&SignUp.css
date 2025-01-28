@@ -1,0 +1,53 @@
+ 
+    .inputbox input {
+        text-align: center;
+        justify-content: center;
+        margin-top: 0.5rem;  /* reduced from 1rem */
+        border: 3px solid #055dbc;
+        padding: 12px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        outline: none;
+        display: block;
+    }
+
+    .textboxdiv input:focus {
+        border: 3px solid #39B5E8;
+        justify-content: center;
+
+    }
+    .submitbtn {
+        justify-content: center;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .submitbtn input {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 1.2rem;
+        background-color: #055dbc;
+        color: white;
+        border: none;
+        margin-top: 20px;  /* reduced from 50px */
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+    }
+
+    .submitbtn:hover {
+        background-color: #39B5E8;
+    }
+
+    .container {
+        background: linear-gradient(to top left, #055dbc74, #ffffff);
+        border: 3px solid #055dbcbb;
+        flex-direction: column;
+        width: 400px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        padding: 10px;  /* reduced from 20px */
+        border-radius: 10px;
+    }

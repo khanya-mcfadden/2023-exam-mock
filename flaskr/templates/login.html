@@ -4,16 +4,17 @@
 {% extends "index.html" %}
 {% block title %}Login{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="/static/login&SignUp.css" />
 
-<div>
+<div >
     <div class="container">
-        <h1 style="margin-bottom: 20px; text-align: center;">Login</h1>
+        <h1>Login</h1>
         <form action="/login" method="post">
             <!-- test inputs for login -->
-            <div class="textboxdiv input">
+            <div class="inputbox">
                 <input type="text" name="username" placeholder="Username">
             </div>
-            <div class="textboxdiv input">
+            <div class="inputbox">
                 <input type="password" name="password" placeholder="Password">
             </div>
             <!-- submit buton for login -->
@@ -21,7 +22,7 @@
                 <input type="submit" value="login" class="loginbtn">
             </div>
             <!-- sign up info for login page -->
-            <div style="text-align: center; margin-top: 10px;">
+            <div>
                 <br>
                 <a href="/Sign-Up" style="color: #0098DB;">Don't have an account? Register</a>
             </div>
@@ -63,54 +64,7 @@
     }
 
 </script>
-<style>
-    .textboxdiv input {
-        text-align: center;
-        margin-top: 10px;
-        border: 3px solid #055dbc;
-        width: 100%;
-        padding: 10px;
-        font-size: 1.2rem;
-        border-radius: 5px;
-        outline: none;
-    }
 
-    .textboxdiv input:focus {
-        border: 3px solid #39B5E8;
-    }
-    .submitbtn {
-        width: 100%;
-        padding: 12px 20px;
-        font-size: 1.2rem;
-        background-color: #055dbc;
-        color: white;
-        border: none;
-        margin-top: 50px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .submitbtn:hover {
-        background-color: #39B5E8;
-    }
-
-    .container {
-        background: linear-gradient(to top left, #055dbc74, #ffffff);
-        border: 3px solid #055dbcbb;
-        flex-direction: column;
-        width: 25rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 45vh;
-        margin: auto;
-        margin-top: 1%;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-    }
-</style>
 {% endblock %}
 
 </html>

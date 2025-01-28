@@ -3,11 +3,14 @@
     {% extends "index.html" %}
     {% block title %}test{% endblock %}
     {% block content %}
+    <link rel="stylesheet" href="/static/confirm.css" />
+
 <body>
-    
+    <div class="confirm-text">
     <h1>order placed Successfully!</h1>
     <p>Thank you for ordering. Your order has been finished successfully.</p>
     <p> if you want to go to the main page <a href="/home">click here</a></p>
+    </div>
 </body>
 {% endblock %}
 </html>
