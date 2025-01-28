@@ -8,14 +8,47 @@ finished importing other html pages, and added in pyhton backed code
 version 0.1.1 11:43
 adding in footer and scroll functinality
 
+
 27/01/2025
 version 0.1.2
 compleated footer features and is fixing currant css 
 
+
+
 28/01/2025
 version 0.1.2
-compleated login, sign up and confirm page css 9:40
+compleated login, sign up and confirm page css 9:40 am
 
 compleated 404 css 10:40
 
-fixed other genral issues updated admin page and updated css
+fixed other genral issues updated admin page and updated css 11:00 am
+
+Enhance weather page: add location search section and improve CSS styles for better readability 2:00pm
+
+Refactor CSS styles for user info and 404 pages; update index and users info templates 12:00pm
+
+
+fixed other genral issues updated admin page and updated css 12:20pm
+
+
+
+Refactor user table to singular form and implement user deletion script 11pm
+committed
+3 hours ago
+
+
+Refactor database schema: rename 'users' table to 'user' and add 'articles' table
+committed
+3 hours ago
+
+Update logo image in index.html and add new logo file
+committed
+3 hours ago
+
+Add 404 error page with custom styles and footer
+committed
+4 hours ago
+
+compleated login, sign up and confirm page css
+committed
+4 hours ago
