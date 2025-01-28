@@ -14,4 +14,6 @@ compleated footer features and is fixing currant css
 
 28/01/2025
 version 0.1.2
-compleated login, sign up and confirm page css
+compleated login, sign up and confirm page css 9:40
+
+compleated 404 css 10:40

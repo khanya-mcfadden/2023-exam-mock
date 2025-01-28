@@ -1,38 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 Not Found</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 50px;
-      }
+{% extends "index.html" %}
+{% block title %}404-page{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="/static/404.css">
 
-      h1 {
-        font-size: 50px;
-      }
-
-      p {
-        font-size: 20px;
-      }
-
-      a {
-        color: #007bff;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-    </style>
-  </head>
-
-  <body>
+<body>
+  <div class="error">
+    <p>Page not found</p>
     <h1>404</h1>
     <p>Oops! The page you are looking for cannot be found.</p>
     <p><a href="/">Go back to the homepage</a></p>
-  </body>
-</html>
+  </div>
+  <footer>
+    <p>Footer content here</p>
+  </footer>
+</body>
+
+{% endblock %}
