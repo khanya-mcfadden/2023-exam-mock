@@ -8,11 +8,19 @@
 {% block content %}
 
 <body>
+    <h1>Weather Forecast</h1>
     <div class="container1" style="display: flex; justify-content: center; align-items: center; min-height: 50px;">
         <div class="forecast" id="forecast">
         </div>
     </div>
+    <div class="location-search">
+        <p>new location: <span id="location"></span></p>
+        <form onsubmit="event.preventDefault(); updateLocation()">
+            <input type="text" id="locationInput" placeholder="Enter city name">
+            <button type="submit">Update Location</button>
+        </form>
 
+    </div>
     <script>
         fetch('/weather_data')
             .then(response => response.json())
@@ -42,85 +50,104 @@
                 console.error('Error fetching weather data:', error);
                 document.getElementById('forecast').innerHTML = '<p>Failed to load weather data</p>';
             });
+        function updateLocation() {
+            const newLocation = document.getElementById('locationInput').value;
+            document.getElementById('location').textContent = newLocation;
 
-
-
-        function getSeason() {
-            const month = new Date().getMonth();
-            if (month >= 2 && month <= 4) return 'spring';
-            if (month >= 5 && month <= 7) return 'summer';
-            if (month >= 8 && month <= 10) return 'autumn';
-            return 'winter';
+            fetch(`/weather_data?location=${encodeURIComponent(newLocation)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error('Error fetching weather data:', data.details);
+                        document.getElementById('forecast').innerHTML = '<p>Failed to load weather data</p>';
+                        return;
+                    }
+                    const forecastContainer = document.getElementById('forecast');
+                    forecastContainer.innerHTML = data.forecast.forecastday.map((day, index) => {
+                        const date = new Date(day.date);
+                        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                        const formattedDate = index === 0 ? 'Today' : date.toLocaleDateString('en-US', options);
+                        return `
+                    <div class="weather-card">
+                        <h2>${data.location.name} - ${formattedDate}</h2>
+                        <img src="${day.day.condition.icon}" alt="Weather Icon">
+                        <p>${day.day.condition.text}</p>
+                        <p>Max Temp: ${day.day.maxtemp_c}&deg;C</p>
+                        <p>Min Temp: ${day.day.mintemp_c}&deg;C</p>
+                    </div>
+                `;
+                    }).join('');
+                })
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                    document.getElementById('forecast').innerHTML = '<p>Failed to load weather data</p>';
+                });
         }
-
-        function displayAdvice() {
-            const season = getSeason();
-            document.getElementById('season').textContent = season;
-            const seasonAdvice = advice[season] || ["No advice available for this season."];
-            document.getElementById('advice-box').innerHTML = seasonAdvice.map(item => `<p>${item}</p>`).join('');
-        }
-
-        displayAdvice();
     </script>
 
-<style>
-    .forecast {
-        display: flex;
-        justify-content: center;
-        align-items: left;
-    }
+    <style>
+        .forecast {
+            display: flex;
+            justify-content: center;
+            align-items: left;
+        }
 
-    .weather-card {
-        background-color: white;
-        margin: 10px;
-        padding: 20px;
-        width: 300px;
-        border-radius: 10px;
-        box-shadow: 0 0 5px #ffffff;
-        text-align: center;
-    }
+        .weather-card {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px #ffffff;
+            text-align: center;
+        }
 
-    .weather-card img {
-        width: 80px;
-        height: 80px;
-        margin: 10px auto;
-    }
+        .weather-card img {
+            width: 80px;
+            height: 80px;
+            margin: 10px auto;
+        }
 
-    .weather-card h2 {
-        margin: 0;
-        color: #333;
-    }
+        .weather-card h2 {
+            margin: 0;
+            color: #333;
+        }
 
-    .weather-card p {
-        margin: 10px 0;
-        color: #666;
-    }
+        .weather-card p {
+            margin: 10px 0;
+            color: #666;
+        }
 
-    .container1 {
-        width: 100%;
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-    }
-    body {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-    }
-    footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        text-align: center;
-        color: #000000;
-    }
+        .container1 {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
 
-</style>
+
+        body {
+            font-family: "Lato", sans-serif;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 0;
+            height: 100rem;
+            width: 100%;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            text-align: center;
+            color: #000000;
+            padding: 1rem 0;
+            /* Added padding instead of margin */
+        }
+    </style>
 
 </body>
 {% endblock %}
