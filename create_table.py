@@ -5,7 +5,7 @@ cursor = connection.cursor()
 # Create a table with the name users
 cursor.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, username TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, admin BOOLEAN NOT NULL DEFAULT FALSE)")
 cursor.execute(
-    "INSERT INTO users (username, email, password, admin) VALUES ('admin', 'admin@gmail.com', '123456789', TRUE)")
+    "INSERT INTO user (username, email, password, admin) VALUES ('admin', 'admin@gmail.com', '123456789', TRUE)")
 
 
 cursor.execute("create table if not exists courses (course_id INTEGER PRIMARY KEY, course_name TEXT NOT NULL, course_description TEXT NOT NULL,course_duration TEXT NOT NULL)")

@@ -26,9 +26,15 @@ def init_db():
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
     # Create the user table if it doesn't exist
-    cursor.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, username TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, admin BOOLEAN NOT NULL DEFAULT FALSE)")
-    cursor.execute("create table if not exists courses (course_id INTEGER PRIMARY KEY, course_name TEXT NOT NULL, course_description TEXT NOT NULL,course_duration TEXT NOT NULL)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS bookings (booking_id INTEGER PRIMARY KEY, courses text, username text, date TEXT, time TEXT, FOREIGN KEY(username) REFERENCES user(username))")
+    cursor.execute(
+        "CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, username TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, admin BOOLEAN NOT NULL DEFAULT FALSE)"
+    )
+    cursor.execute(
+        "create table if not exists courses (course_id INTEGER PRIMARY KEY, course_name TEXT NOT NULL, course_description TEXT NOT NULL,course_duration TEXT NOT NULL)"
+    )
+    cursor.execute(
+        "CREATE TABLE IF NOT EXISTS bookings (booking_id INTEGER PRIMARY KEY, courses text, username text, date TEXT, time TEXT, FOREIGN KEY(username) REFERENCES user(username))"
+    )
     connection.commit()
     connection.commit()
     connection.close()
@@ -133,6 +139,7 @@ def BookingPage_page():
 def unfinishedpage_page():
     return render_template("unfinished.html")
 
+
 @app.route("/Orderingpage", methods=["GET", "POST"])
 def Orderingpage_page():
     if "username" not in session:
@@ -196,7 +203,9 @@ def about_page():
 def get_courses():
     conn = sqlite3.connect("user.db")
     cursor = conn.cursor()
-    cursor.execute("SELECT articles_id INTEGER PRIMARY KEY, articles text, writer text, date TEXT, time TEXT)")
+    cursor.execute(
+        "SELECT articles_id INTEGER PRIMARY KEY, articles text, writer text, date TEXT, time TEXT)"
+    )
     courses = cursor.fetchall()
     conn.close()
     return render_template("courses_info.html", courses=courses)
@@ -292,6 +301,7 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/Sign-Up", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -324,8 +334,8 @@ def register():
             password,
         ):
             return (
-            "Password must contain at least 8 characters, including uppercase, lowercase, digits, and special characters.",
-            400,
+                "Password must contain at least 8 characters, including uppercase, lowercase, digits, and special characters.",
+                400,
             )
         # Hash the password
         hashed_password = generate_password_hash(password, method="pbkdf2:sha256")
@@ -365,9 +375,6 @@ def register():
 @app.route("/weather_page")
 def health():
     return render_template("weather_page.html")
-
-
-
 
 
 @app.route("/theme", methods=["POST"])
@@ -431,8 +438,8 @@ def change_password():
     return render_template("profile.html")
 
 
-@app.route("/userinfo")
-def user_info():
+@app.route("/usersinfo")
+def users_info():
     if "username" not in session or not session.get("admin"):
         return redirect(url_for("login"))
 
@@ -443,14 +450,21 @@ def user_info():
         user = cursor.fetchall()
 
         cursor.execute(
+            "SELECT booking_id, courses, username, date, time FROM bookings"
+        )
+        
+        bookings = cursor.fetchall()
+        
+        cursor.execute(
             "SELECT course_id, course_name, course_description, course_duration FROM courses"
         )
         courses = cursor.fetchall()
 
         connection.close()
-        return render_template("user_info.html", user=user, courses=courses)
+        return render_template("users_info.html", user=user, courses=courses, bookings=bookings)
     except sqlite3.Error as e:
         return f"Database error: {str(e)}", 500
+
 
 
 @app.route("/add_course", methods=["POST"])
@@ -488,10 +502,11 @@ def add_course():
         )
         connection.commit()
         connection.close()
-        return redirect("/userinfo")
+        return redirect("/userinfo.html")
     except sqlite3.Error as e:
         connection.close()
-        return f"Failed to add course: {e}", 500  
+        return f"Failed to add course: {e}", 500
+
 
 @app.route("/delete_course", methods=["POST"])
 def delete_course():
@@ -514,7 +529,8 @@ def delete_course():
     except sqlite3.Error as e:
         connection.close()
         return f"Failed to delete course: {e}", 500
-    
+
+
 @app.route("/delete_user", methods=["POST"])
 def delete_user():
     if "username" not in session or not session.get("admin"):
@@ -536,12 +552,14 @@ def delete_user():
     except sqlite3.Error as e:
         connection.close()
         return f"Failed to delete user: {e}", 500
-    
+
+
 @app.route("/set_cookie", methods=["POST"])
 def set_cookie():
     response = make_response(redirect(url_for("index")))
     response.set_cookie("cookie_consent", "true", max_age=60 * 60 * 24 * 365)  # 1 year
     return response
+
 
 @app.route("/search", methods=["GET"])
 def search():
@@ -553,24 +571,31 @@ def search():
     cursor = connection.cursor()
 
     # Search user
-    cursor.execute("SELECT id, username, email FROM user WHERE LOWER(username) LIKE ? OR LOWER(email) LIKE ?", 
-                    (f"%{query}%", f"%{query}%"))
+    cursor.execute(
+        "SELECT id, username, email FROM user WHERE LOWER(username) LIKE ? OR LOWER(email) LIKE ?",
+        (f"%{query}%", f"%{query}%"),
+    )
     user = cursor.fetchall()
 
-    # Search courses 
-    cursor.execute("SELECT course_id, course_name, course_description FROM courses WHERE LOWER(course_name) LIKE ? OR LOWER(course_description) LIKE ?",
-                    (f"%{query}%", f"%{query}%"))
+    # Search courses
+    cursor.execute(
+        "SELECT course_id, course_name, course_description FROM courses WHERE LOWER(course_name) LIKE ? OR LOWER(course_description) LIKE ?",
+        (f"%{query}%", f"%{query}%"),
+    )
     courses = cursor.fetchall()
 
     connection.close()
-    return jsonify({
-        "user": user,
-        "courses": courses
-    })
-    
-@app.route('/favicon.ico')
+    return jsonify({"user": user, "courses": courses})
+
+
+@app.route("/favicon.ico")
 def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(
+        os.path.join(app.root_path, "static"),
+        "favicon.ico",
+        mimetype="image/vnd.microsoft.icon",
+    )
+
 
 @app.route("/weather_page")
 def weather_page():
@@ -579,15 +604,14 @@ def weather_page():
 
 @app.route("/weather_data")
 def get_weather_data():
-    api_key = '0f98d01acd0e41818d8124023242111'
-    url = f'https://api.weatherapi.com/v1/forecast.json?key={api_key}&q=horsham&days=4&aqi=no'
+    api_key = "0f98d01acd0e41818d8124023242111"
+    url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q=horsham&days=4&aqi=no"
     try:
         response = requests.get(url)
         response.raise_for_status()  # Raises an HTTPError if the status is 4xx, 5xx
         return jsonify(response.json())
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Failed to fetch weather data", "details": str(e)})
-
 
 
 # Error handler for 404

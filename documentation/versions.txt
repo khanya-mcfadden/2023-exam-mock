@@ -17,3 +17,5 @@ version 0.1.2
 compleated login, sign up and confirm page css 9:40
 
 compleated 404 css 10:40
+
+fixed other genral issues updated admin page and updated css
