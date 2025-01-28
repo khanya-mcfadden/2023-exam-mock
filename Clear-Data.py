@@ -4,11 +4,11 @@ import sqlite3
 def clear_users_table():
     try:
         # Connect to the database
-        conn = sqlite3.connect("users.db")
+        conn = sqlite3.connect("user.db")
         cursor = conn.cursor()
 
         # Clear data from the users table
-        cursor.execute("DELETE FROM users")
+        cursor.execute("DELETE FROM user")
         cursor.execute("DELETE FROM bookings")
         cursor.execute("DELETE FROM courses")
 

@@ -15,6 +15,9 @@ cursor.execute("INSERT INTO courses (course_name, course_description, course_dur
 cursor.execute("INSERT INTO courses (course_name, course_description, course_duration) VALUES ('C++', 'C++ is a general-purpose programming language created as an extension of the C programming language.', '5 months')")
 cursor.execute("INSERT INTO courses (course_name, course_description, course_duration) VALUES ('Ruby', 'Ruby is an interpreted, high-level, general-purpose programming language.', '3 months')")
 cursor.execute("CREATE TABLE IF NOT EXISTS bookings (booking_id INTEGER PRIMARY KEY, courses text, username text, date TEXT, time TEXT, FOREIGN KEY(username) REFERENCES users(username))")
+
+
+cursor.execute("create table if not exists articles (articles_id INTEGER PRIMARY KEY, articles text, writer text, date TEXT, time TEXT)")
 connection.commit()
 
 connection.close()
