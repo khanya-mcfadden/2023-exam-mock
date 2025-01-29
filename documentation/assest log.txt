@@ -105,3 +105,4 @@ footer {
     word-wrap: break-word;
 }
 "
+-had modifed sidbar css from the w3school fixed  sidebar tutorial link: https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp
