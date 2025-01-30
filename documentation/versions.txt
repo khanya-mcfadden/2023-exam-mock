@@ -31,3 +31,9 @@ compleated login, sign up and confirm page css 10AM
 
 29/01/2025
 VERSION 0.1.3
+did a todo list 
+added weather page features
+
+30/01/2025
+improved of assest log 
+added to weather page
