@@ -192,7 +192,7 @@ def test_page():
     return render_template("test.html")
 
 
-@app.route("/about")
+@app.route("/about_page")
 def about_page():
     return render_template("about.html")
 
@@ -467,7 +467,7 @@ def add_booking():
     date = request.form.get("date")
     time = request.form.get("time")
 
-    if not course or not date or not time:
+    if not assesor or not date or not time:
         return "Please fill out all fields", 400
 
     connection = sqlite3.connect("user.db")
@@ -477,7 +477,7 @@ def add_booking():
         # Insert the new booking
         cursor.execute(
             "INSERT INTO bookings (assesor, date, time, username) VALUES (?, ?, ?, ?)",
-            (course, date, time, session.get("username")),
+            (assesor, date, time, session.get("username")),
         )
         connection.commit()
         connection.close()
