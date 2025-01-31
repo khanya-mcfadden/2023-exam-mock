@@ -2,66 +2,92 @@
 <html lang="en">
 
 <head>
-  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>{% block title %}Home Page{% endblock %}</title>
   <link rel="stylesheet" href="/static/main.css" />
+
 </head>
 
 <body>
-
   <div class="welcome">
-    <div style="display: flex; align-items: center; justify-content: left; flex-wrap: wrap; padding: 10px">
+    <div style="
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          flex-wrap: wrap;
+          padding: 10px;
+        ">
       <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="health group website Logo"
-        style="margin: 5px; width: 100px; max-width: 100%; height: auto;" />
-      <h1 style="text-align: left; margin: 10px">Welcome to the Trustees of Health Advice Group</h1>
+        style="margin: 5px; width: 100px; max-width: 100%; height: auto" />
+      <h1 style="text-align: left; margin: 10px">
+        Welcome to the Trustees of Health Advice Group
+      </h1>
 
-      <h2 style="color: #055CBC; text-align: left; margin: 10px; font-size:medium">
+      <h2 style="
+            color: #055cbc;
+            text-align: left;
+            margin: 10px;
+            font-size: medium;
+          ">
         Your Trusted Partner in Health and Wellness
       </h2>
-     
     </div>
   </div>
- <nav class="navbar"></nav>
+  <nav class="navbar"></nav>
   <nav class="nav">
     <!-- base page links -->
-    <a href="/"                     style="color: #0571D2; font-size: 1.5em;">Home</a>
-    <a href="/about_page"           style="color: #0571D2; font-size: 1.5em;">About</a>
-    <a href="/weather_page"         style="color: #0571D2; font-size: 1.5em;">weather</a>
-    <a href="/BookingPage"          style="color: #0571D2; font-size: 1.5em;">Booking</a>
-    <a href="/articles"             style="color: #0571D2; font-size: 1.5em;">Articles</a>
+    <a href="/" style="color: #0571d2; font-size: 1.5em">Home</a>
+    <a href="/about_page" style="color: #0571d2; font-size: 1.5em">About</a>
+    <a href="/weather_page" style="color: #0571d2; font-size: 1.5em">weather</a>
+    <a href="/BookingPage" style="color: #0571d2; font-size: 1.5em">Booking</a>
+    <a href="/articles" style="color: #0571d2; font-size: 1.5em">Articles</a>
     <!-- admin page links -->
     {% if admin %}
-    <a href="/usersinfo"            style="color: #0571D2; font-size: 1.5em;; margin-left: auto">User Info</a>
-    <a href="/test"                 style="color: #0571D2; font-size: 1.5em;">Test</a>
+    <a href="/usersinfo" style="color: #0571d2; font-size: 1.5em; margin-left: auto">User Info</a>
+    <a href="/test" style="color: #0571d2; font-size: 1.5em">Test</a>
     <!-- loged in page lnks -->
     {% if authenticated %}
-    <a href="/profile"              style="color: #0571D2; font-size: 1.5em;">Profile</a>
+    <a href="/profile" style="color: #0571d2; font-size: 1.5em">Profile</a>
     <!-- pages that are only there when signed out -->
     {% endif %} {% else %}
-    <a href="/Sign-Up"              style="color: #0571D2; font-size: 1.5em;; margin-left: auto">Sign Up</a>
-    <a href="/login"                style="color: #0571D2; font-size: 1.5em;">Login</a>
+    <a href="/Sign-Up" style="color: #0571d2; font-size: 1.5em; margin-left: auto">Sign Up</a>
+    <a href="/login" style="color: #0571d2; font-size: 1.5em">Login</a>
     {% endif %}
   </nav>
   <div class="gradient-navbar"></div>
 
   {% block content %}
-  <div style="text-align: center; padding: 20px">
+  <div style="text-align: center; padding: 20px; overflow: hidden">
     <p>We are glad to have you here. Explore and enjoy your stay!</p>
     <div style="display: flex; justify-content: center; gap: 20px">
       <img src="/static/image 1(coding child).png" alt="Image 1" style="width: auto; height: auto" />
       <img src="/static/image 2(teacher and kids).png" alt="Image 2" style="width: auto; height: auto" />
     </div>
   </div>
-  <div id="season_title" class="season_title">
+    <!-- seasonal advice container -->
+  <div id="season_title" class="season_title" style="margin-left: 0px; height: auto; width: 50%">
     <h1>How to deal with the season:</h1>
   </div>
 
-  <div class="container" style="float: left; width: 50%;">
+
+  <div class="container" style="margin-left: 0px; height: auto; width: 50%">
     <h2><span id="season"></span></h2>
     <div class="advice-box" id="advice-box"></div>
   </div>
+
+  <!-- ai advice -->
+  <div id="Ai_title" class="Ai_title" style="margin-left: auto; height: auto; width: 50%">
+    <h1>How to deal with the season ai edition:</h1>
+  </div>
+  
+  <div class="container" style="margin-left: auto; height: auto; width: 50%">
+    <h2>Seasonal Weather Forecast</h2>
+  </div>
+  
+  <div class="clearfix"></div>
+
 
 
 
@@ -90,9 +116,8 @@
       </form>
     </div>
   </div>
-  <br>
+  <br />
   {% endif %} {% endblock %}
-
 
   <div class="footer" id="footer">
     <footer>
@@ -126,12 +151,10 @@
       </div>
 
       <div class="footer-logo">
-        <img src="https://via.placeholder.com/100x50" alt="Lift Logo">
+        <img src="https://via.placeholder.com/100x50" alt="Lift Logo" />
       </div>
 
-      <div class="footer-bottom">
-        © 2020 Lift Media. All rights reserved.
-      </div>
+      <div class="footer-bottom">© 2020 Lift Media. All rights reserved.</div>
 
       <div class="social-icons">
         <a href="https://en-gb.facebook.com/login.php/">Facebook</a>
@@ -140,31 +163,34 @@
       </div>
     </footer>
   </div>
-
-  <script>
-
-  </script>
-
-
 </body>
 
 </html>
+
 <!--  script for seaonal weather  -->
 <script>
-  fetch('/weather_data')
-    .then(response => response.json())
-    .then(data => {
+  fetch("/weather_data")
+    .then((response) => response.json())
+    .then((data) => {
       if (data.error) {
-        console.error('Error fetching weather data:', data.details);
-        document.getElementById('forecast').innerHTML = '<p>Failed to load weather data</p>';
+        console.error("Error fetching weather data:", data.details);
+        document.getElementById("forecast").innerHTML =
+          "<p>Failed to load weather data</p>";
         return;
       }
-      const forecastContainer = document.getElementById('forecast');
-      forecastContainer.innerHTML = data.forecast.forecastday.map((day, index) => {
-        const date = new Date(day.date);
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const formattedDate = index === 0 ? 'Today' : date.toLocaleDateString('en-US', options);
-        return `
+      const forecastContainer = document.getElementById("forecast");
+      forecastContainer.innerHTML = data.forecast.forecastday
+        .map((day, index) => {
+          const date = new Date(day.date);
+          const options = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          };
+          const formattedDate =
+            index === 0 ? "Today" : date.toLocaleDateString("en-US", options);
+          return `
                   <div class="weather-card">
                       <h2>${data.location.name} - ${formattedDate}</h2>
                       <img src="${day.day.condition.icon}" alt="Weather Icon">
@@ -173,11 +199,13 @@
                       <p>Min Temp: ${day.day.mintemp_c}&deg;C</p>
                   </div>
               `;
-      }).join('');
+        })
+        .join("");
     })
-    .catch(error => {
-      console.error('Error fetching weather data:', error);
-      document.getElementById('forecast').innerHTML = '<p>Failed to load weather data</p>';
+    .catch((error) => {
+      console.error("Error fetching weather data:", error);
+      document.getElementById("forecast").innerHTML =
+        "<p>Failed to load weather data</p>";
     });
   const advice = {
     winter: [
@@ -188,42 +216,39 @@
       "<span class='highlight'>Get Vaccinated</span>    : Ensure you are up-to-date with flu vaccinations to protect against seasonal flu",
       "<span class='highlight'>Wash Hands</span>         : Practice good hygiene by washing hands frequently to prevent the spread of germs..",
       "<span class='highlight'>Stay Connected</span>  : Maintain social connections to combat winter blues and seasonal affective disorder (SAD).",
-
-
     ],
     spring: [
       "<span class='highlight'>Allergy Management</span> : Keep windows closed during high pollen days and take antihistamines if needed.",
-      "<span class='highlight'>Stay Active</span> : Take advantage of the mild weather to engage in outdoor activities like walking or cycling."
+      "<span class='highlight'>Stay Active</span> : Take advantage of the mild weather to engage in outdoor activities like walking or cycling.",
     ],
     summer: [
       "<span class='highlight'>Stay Hydrated</span> : Drink plenty of water to stay hydrated in the heat.",
-      "<span class='highlight'>Sun Protection</span> : Wear sunscreen, hats, and sunglasses to protect against harmful UV rays."
+      "<span class='highlight'>Sun Protection</span> : Wear sunscreen, hats, and sunglasses to protect against harmful UV rays.",
     ],
     autumn: [
       "<span class='highlight'>Layer Up</span> : Dress in layers to adjust to fluctuating temperatures.",
-      "<span class='highlight'>Boost Immunity</span> : Eat a diet rich in vitamins to strengthen your immune system for the cold season."
-    ]
-  }
-
+      "<span class='highlight'>Boost Immunity</span> : Eat a diet rich in vitamins to strengthen your immune system for the cold season.",
+    ],
+  };
 
   function getSeason() {
     const month = new Date().getMonth();
-    if (month >= 2 && month <= 4) return 'spring';
-    if (month >= 5 && month <= 7) return 'summer';
-    if (month >= 8 && month <= 10) return 'autumn';
-    return 'winter';
+    if (month >= 2 && month <= 4) return "spring";
+    if (month >= 5 && month <= 7) return "summer";
+    if (month >= 8 && month <= 10) return "autumn";
+    return "winter";
   }
 
   function displayAdvice() {
     const season = getSeason();
-    document.getElementById('season').textContent = season;
-    const seasonAdvice = advice[season] || ["No advice available for this season."];
-    document.getElementById('advice-box').innerHTML = seasonAdvice.map(item => `<p>${item}</p>`).join('');
+    document.getElementById("season").textContent = season;
+    const seasonAdvice = advice[season] || [
+      "No advice available for this season.",
+    ];
+    document.getElementById("advice-box").innerHTML = seasonAdvice
+      .map((item) => `<p>${item}</p>`)
+      .join("");
   }
 
   displayAdvice();
 </script>
-
-<style>
-
-</style>

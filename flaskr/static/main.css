@@ -1,13 +1,11 @@
-html {
+ html {
   font-size: 16px;
   scroll-behavior: smooth;
 }
 
 .highlight {
   color: #b21f75;
-  /* Change this to your desired color */
   font-weight: bold;
-  /* Optional: make the text bold */
 }
 
 .main {
@@ -32,14 +30,7 @@ body {
   overflow-x: hidden;
 }
 
-body.light-mode .overlay-content {
-  background-color: #fff;
-  color: #000;
-}
 
-.content.dark-mode {
-  background-color: #444444;
-}
 
 .cookie-consent {
   display: none;
@@ -59,6 +50,8 @@ body.light-mode .overlay-content {
   background-color: white;
   color: #333;
 }
+
+ 
 
 .day {
   text-align: center;
@@ -124,65 +117,9 @@ body.light-mode .overlay-content {
   color: black;
 }
 
-@media screen and (max-width: 768px) {
-  .nav a {
-    display: none;
-  }
 
-  .responsive-link {
-    display: none;
-    /* Hide the links that will go into the dropdown */
-  }
 
-  .nav-toggle {
-    display: block;
-    /* Show the hamburger icon */
-    float: right;
-    background-color: #333;
-    color: #c9c8c8;
-    font-size: 30px;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
 
-  .nav-toggle:hover {
-    background-color: #7f7f7f;
-    color: black;
-  }
-
-  .dropdown-menu {
-    display: none;
-    /* Hidden by default */
-    position: absolute;
-    top: 100%;
-    /* Positions below the nav bar */
-    right: 0;
-    background-color: #333333;
-    width: 100%;
-    /* Full width for mobile */
-  }
-
-  .dropdown-menu a {
-    float: none;
-    color: #c9c8c8;
-    padding: 14px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: block;
-    /* Full width links */
-  }
-
-  .dropdown-menu a:hover {
-    background-color: #444;
-    color: white;
-  }
-}
-
-/* When dropdown is active, show the links */
-.dropdown-active {
-  display: block !important;
-}
 
 .nav {
   align-items: center;
@@ -310,7 +247,21 @@ h2 {
   text-align: center;
 }
 
-html,
+.Ai_title {
+  box-sizing: border-box;
+  max-width: 900px;
+  border: 1px solid #0098db;
+  display: flex;
+  justify-content: flex-start;
+  height: auto;
+  width: 50%;
+  margin-bottom: 0px;
+  flex-direction: column;
+  background-color: #0098db;
+  text-align: center;
+}
+
+
 body {
   height: 100%;
   margin: 0;
@@ -363,7 +314,7 @@ footer {
   max-width: 1200px;
   margin: auto;
 }
-
+  
 .footer-column {
   flex: 1;
   min-width: 150px;
@@ -432,4 +383,4 @@ footer {
 clours1 {
   color: #fff #c9c8c8 #aaaaaa #7f7f7f #000 #00ffff #39b5e8 #0098db #0571d2
     #055cbc #034082 #012246 #00a499 #056948 #009633 #77c001 #fbe201 #b21f75;
-}
+} 
