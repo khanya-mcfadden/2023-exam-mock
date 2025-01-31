@@ -6,10 +6,50 @@
 <link rel="stylesheet" href="/static/confirm.css" />
 
 <body>
+    <main>
     <div class="confirm-text">
-    <h1>booking compleated sucsessfully!</h1>
-    <p>Thank you for registering. Your account has been created successfully.</p>
+        <h1>Session placed Successfully!</h1>
+        <p>Thank you for booking. Your assesment has been booked successfully.</p>
+        <p> if you want to go to the main page <a href="/home">click here</a></p>
     </div>
+
+    <div class="container" style="margin: auto; text-align: center; width: 40rem;overflow: hidden;">
+        <div style="display: flex; justify-content: center; gap: 20px;">
+            <div>
+            <p>If you want to provide customer feedback</p>
+            <br>
+            <iframe width="10rem" height="150px"
+                src="https://forms.office.com/Pages/ResponsePage.aspx?id=CdDIyR-2JUOW3P06doIHq_QNFVgP94xDloBOCNpImkBUNDEyT0NaTTVYRU9XMUVEQzkwRDZNVlVLTC4u&embed=true"
+                frameborder="0" marginwidth="0" marginheight="0" style="border: none; width: 10rem; max-height: 100vh; overflow: hidden;"
+                allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+            </div>
+            <div>
+            <p>If you want to provide developer feedback</p>
+            <br>
+            <iframe width="10rem" height="150px"
+                src="https://forms.office.com/Pages/ResponsePage.aspx?id=CdDIyR-2JUOW3P06doIHq_QNFVgP94xDloBOCNpImkBUMVNZTkFOUFhXU1VYUEhISVpDQk1WV1pQUi4u&embed=true"
+                frameborder="0" marginwidth="0" marginheight="0" style="border: none; width: 10rem; max-height: 100vh; overflow: hidden;"
+                allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+            </div>
+        </div>
+    </div>
+    </main>
+    <style>
+        footer {
+            position: relative;
+            z-index: 1000;
+            height: auto;
+            min-height: 1px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            background: #ffffff;
+            text-align: center;
+            color: #000000;
+            margin-top: 20px;
+        }
+    </style>
 </body>
 {% endblock %}
 

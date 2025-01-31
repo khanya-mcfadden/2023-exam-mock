@@ -33,9 +33,7 @@ def init_db():
     cursor.execute(
         "CREATE TABLE IF NOT EXISTS bookings (booking_id INTEGER PRIMARY KEY, assesor text, username text, date TEXT, time TEXT, FOREIGN KEY(username) REFERENCES user(username))"
     )
-    cursor.execute(
-        "CREATE TABLE IF NOT EXISTS assesor (id INTEGER PRIMARY KEY, assesor_name TEXT NOT NULL)"
-    )
+
     connection.commit()
     connection.commit()
     connection.close()
@@ -99,7 +97,7 @@ def BookingPage_page():
             """
             CREATE TABLE IF NOT EXISTS bookings (
                 booking_id INTEGER PRIMARY KEY,
-                assesor TEXT NOT NULL,
+                assesor id INTEGER,
                 date TEXT NOT NULL,
                 time TEXT NOT NULL,
                 username TEXT NOT NULL,
@@ -125,7 +123,7 @@ def BookingPage_page():
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
     cursor.execute(
-        "SELECT course_name FROM assesor"
+        "SELECT name FROM assesor"
     )  # Adjust table/column names as needed
     booking = cursor.fetchall()
     connection.close()
