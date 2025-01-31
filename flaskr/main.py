@@ -197,16 +197,7 @@ def about_page():
     return render_template("about.html")
 
 
-@app.route("/courses")
-def get_courses():
-    conn = sqlite3.connect("user.db")
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT articles_id INTEGER PRIMARY KEY, articles text, writer text, date TEXT, time TEXT)"
-    )
-    courses = cursor.fetchall()
-    conn.close()
-    return render_template("courses_info.html", courses=courses)
+
 
 
 @app.route("/confirm")
@@ -244,10 +235,10 @@ def profile():
         return redirect(url_for("login"))
 
     # Fetch user-specific bookings
-    cursor.execute("SELECT courses, date FROM bookings WHERE username = ?", (username,))
+    cursor.execute("SELECT * FROM bookings WHERE username = ?", (username,))
     bookings = cursor.fetchall()
     connection.close()
-
+    
     return render_template("profile.html", username=username, bookings=bookings)
 
 
