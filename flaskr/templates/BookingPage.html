@@ -73,15 +73,15 @@
 
 <body>
     <form method="POST" action="/BookingPage">
-        <h1>Book a course!</h1>
-        <p>Welcome to our booking page! Please select a course and date to make a reservation:</p>
+        <h1>Book a assesor!</h1>
+        <p>Welcome to our booking page! Please select a assesor and date to make a reservation:</p>
         <ul style="list-style: none; padding: 0;">
             <li>
-                <label for="courses">Select a course:</label>
-                <select id="courses" name="courses" required>
-                    <option value="">Select a course</option>
-                    {% for course_name in courses %}
-                    <option value="{{ course_name }}">{{ course_name }}</option>
+                <label for="assesor">Select a assesor:</label>
+                <select id="assesor" name="assesor" required>
+                    <option value="">Select a assesor</option>
+                    {% for assesor_name in assesor %}
+                    <option value="{{ assesor_name }}">{{ assesor_name }}</option>
                     {% endfor %}
                 </select>
             </li>
@@ -100,10 +100,10 @@
         if (form) {
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const course = document.getElementById('courses').value;
+                const assesor = document.getElementById('assesor').value;
                 const date = document.getElementById('date').value;
 
-                if (!course || !date) {
+                if (!assesor || !date) {
                     alert('Please fill in all fields before submitting.');
                     return;
                 }

@@ -33,6 +33,9 @@ def init_db():
     cursor.execute(
         "CREATE TABLE IF NOT EXISTS bookings (booking_id INTEGER PRIMARY KEY, assesor text, username text, date TEXT, time TEXT, FOREIGN KEY(username) REFERENCES user(username))"
     )
+    cursor.execute(
+        "CREATE TABLE IF NOT EXISTS assesor (id INTEGER PRIMARY KEY, assesor_name TEXT NOT NULL)"
+    )
     connection.commit()
     connection.commit()
     connection.close()
@@ -118,18 +121,18 @@ def BookingPage_page():
             connection.close()
             return f"Booking failed: {e}", 500
 
-    # Fetch available courses from the database
+    # Fetch available assesor from the database
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
     cursor.execute(
-        "SELECT course_name FROM courses"
+        "SELECT course_name FROM assesor"
     )  # Adjust table/column names as needed
-    courses = cursor.fetchall()
+    booking = cursor.fetchall()
     connection.close()
 
     # Pass courses to the template
     return render_template(
-        "BookingPage.html", courses=[course[0] for course in courses]
+        "BookingPage.html", assesor=[assesor[0] for assesor in booking]
     )
 
 

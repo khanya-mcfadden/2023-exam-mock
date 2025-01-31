@@ -1,7 +1,7 @@
 2023 mock tasks:
 website creation:
   ☐ website page creation
-    ☐ - compleation of home assessment page
+    ☐ - compleation of home assessment info page
       ☐ create html page
       ☐ create css for page
       ☐ create js for page
@@ -9,18 +9,20 @@ website creation:
       ☐ test page
       
     ☐ - compleation of asssesment booking page
-      ☐ create html page
+      ✔ create html page @done(25-01-31 09:38)
+      ☐ create js for page
       ☐ create css for page
+        ☐ edit css for page
       ☐ create js for page
       ☐ create page functionality
       ☐ test page
 
     ✔ - compleation of login page @done(28-01-2025 09:36)
     
-      ☐ create html page
-      ☐ create css for page
-      ☐ create js for page
-      ☐ create page functionality
+      ✔ create html page @done(25-01-31 09:36)
+        ✔ create css for page @done(25-01-31 09:36)
+      ✔ create js for page @done(25-01-31 09:36)
+      ✔ create page functionality @done(25-01-31 09:36)
       ☐ test page
 
     ✔ - compleation of registration page @done(28-01-2025 09:36)
@@ -30,6 +32,14 @@ website creation:
       ✔ create js for page @done(28-01-2025 09:36)
       ✔ create page functionality @done(28-01-2025 09:36)
       ☐ test page
+        ✔ test page functionality @done(25-01-31 09:37)
+        ✔ test page design @done(25-01-31 09:37)
+        ✔ test page responsiveness @done(25-01-31 09:37)
+        ✔ test page speed @done(25-01-31 09:38)
+        ✔ test invalid inputs @done(25-01-31 09:39)
+        ✔ test valid inputs @done(25-01-31 09:40)
+
+        
 
     ✔ - compleation of home page @done(25-01-29 09:39)
       ✔ create html page @done(25-01-29 09:39)

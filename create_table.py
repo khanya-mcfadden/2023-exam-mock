@@ -12,7 +12,7 @@ cursor.execute(
 )
 
 cursor.execute(
-    "CREATE TABLE IF NOT EXISTS bookings (booking_id INTEGER PRIMARY KEY, assesor text, username text, date TEXT, time TEXT, FOREIGN KEY(username) REFERENCES users(username))"
+    "CREATE TABLE IF NOT EXISTS bookings (booking_id INTEGER PRIMARY KEY, assesor_id INTEGER, username TEXT, date TEXT, time TEXT, FOREIGN KEY(username) REFERENCES user(username))"
 )
 
 
