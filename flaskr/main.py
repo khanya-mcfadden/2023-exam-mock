@@ -478,7 +478,25 @@ def add_booking():
         return f"Failed to add booking: {e}", 500
 
 
-
+@app.route("/delete_booking", methods=["POST"])
+def delete_booking():
+    if "username" not in session:
+        return redirect(url_for("login"))
+    
+    booking_id = request.form.get("booking_id")
+    if not booking_id:
+        return "Please provide a booking ID", 400
+    
+    connection = sqlite3.connect("user.db")
+    cursor = connection.cursor()
+    try:
+        cursor.execute("DELETE FROM bookings WHERE booking_id = ?", (booking_id,))
+        connection.commit()
+        connection.close()
+        return redirect("/profile")
+    except sqlite3.Error as e:
+        connection.close()
+        return f"Failed to delete booking: {e}", 500
 
 
 @app.route("/delete_user", methods=["POST"])
