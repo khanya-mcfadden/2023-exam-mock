@@ -13,27 +13,35 @@
 
   <div class="welcome">
     <div style="display: flex; align-items: center; justify-content: left; flex-wrap: wrap; padding: 10px">
-      <img id="logo" src="{{ url_for('static', filename='logo.png') }}"
-        alt="health group website Logo" style="margin: 5px; width: 100px; max-width: 100%; height: auto;" />
+      <img id="logo" src="{{ url_for('static', filename='logo.png') }}" alt="health group website Logo"
+        style="margin: 5px; width: 100px; max-width: 100%; height: auto;" />
       <h1 style="text-align: left; margin: 10px">Welcome to the Trustees of Health Advice Group</h1>
 
+      <h2 style="color: #055CBC; text-align: left; margin: 10px; font-size:medium">
+        Your Trusted Partner in Health and Wellness
+      </h2>
+     
     </div>
   </div>
-
+ <nav class="navbar"></nav>
   <nav class="nav">
-    <div class="nav-left"></div>
-    <a href="/" style="color: #c9c8c8">Home</a>
-    <a href="/about_page" style="color: #c9c8c8">About</a>
-    <a href="/weather_page" style="color: #c9c8c8">weather</a>
-    <a href="/BookingPage" style="color: #c9c8c8">Booking</a>
+    <!-- base page links -->
+    <a href="/"                     style="color: #0571D2; font-size: 1.5em;">Home</a>
+    <a href="/about_page"           style="color: #0571D2; font-size: 1.5em;">About</a>
+    <a href="/weather_page"         style="color: #0571D2; font-size: 1.5em;">weather</a>
+    <a href="/BookingPage"          style="color: #0571D2; font-size: 1.5em;">Booking</a>
+    <a href="/articles"             style="color: #0571D2; font-size: 1.5em;">Articles</a>
+    <!-- admin page links -->
     {% if admin %}
-    <a href="/usersinfo" style="color: #c9c8c8; float: right">User Info</a>
-    <a href="/test" style="color: #c9c8c8; float: right">Test</a>
+    <a href="/usersinfo"            style="color: #0571D2; font-size: 1.5em;; margin-left: auto">User Info</a>
+    <a href="/test"                 style="color: #0571D2; font-size: 1.5em;">Test</a>
+    <!-- loged in page lnks -->
     {% if authenticated %}
-    <a href="/profile" style="color: #c9c8c8; float: right">Profile</a>
+    <a href="/profile"              style="color: #0571D2; font-size: 1.5em;">Profile</a>
+    <!-- pages that are only there when signed out -->
     {% endif %} {% else %}
-    <a href="/Sign-Up" style="color: #c9c8c8; float: right">Sign Up</a>
-    <a href="/login" style="color: #c9c8c8; float: right">Login</a>
+    <a href="/Sign-Up"              style="color: #0571D2; font-size: 1.5em;; margin-left: auto">Sign Up</a>
+    <a href="/login"                style="color: #0571D2; font-size: 1.5em;">Login</a>
     {% endif %}
   </nav>
   <div class="gradient-navbar"></div>
