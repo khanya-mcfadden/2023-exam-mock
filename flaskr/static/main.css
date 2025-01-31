@@ -261,6 +261,28 @@ h2 {
   text-align: center;
 }
 
+.ai-advice-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.seasonal-advice-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container {
+  height: auto;
+  width: 50%;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 body {
   height: 100%;
