@@ -91,7 +91,9 @@ body {
 
 .h1 {
   color: #333333;
+  font-size: 50px;
 }
+
 
 .health-advice {
   border-top: 1px solid #c9c8c8;
@@ -118,9 +120,6 @@ body {
 }
 
 
-
-
-
 .nav {
   align-items: center;
   background-color: #fff;
@@ -128,6 +127,7 @@ body {
   justify-content: space-between;
   padding: 10px;
   border-bottom: 2.5px dashed #39b5e8;
+  margin-bottom: 5rem;
 }
 
 .nav a {
@@ -326,7 +326,7 @@ footer {
   background: #ffffff;
   text-align: center;
   color: #000000;
-  margin-top: 20px;
+  margin-top: 5rem;
 }
 
 .footer-container {
