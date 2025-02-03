@@ -585,6 +585,9 @@ def get_weather_data():
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Failed to fetch weather data", "details": str(e)})
 
+@app.route("/articles_page")
+def articles_page():
+    return render_template("articles.html")
 
 # Error handler for 404
 @app.errorhandler(404)

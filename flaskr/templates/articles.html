@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "index.html" %}
+{% block title %}unfinished{% endblock %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles Page</title>
+    <link rel="stylesheet" href="/static/articles.css">
+</head>
+<body>
+    <header>
+        <h1><u>Articles</u></h1>
+    </header>
+    <div class="container">
+        <main>
+            <div class="search-section">
+                <label for="category">Filter by category:</label>
+                <select id="category" name="category" onchange="filterArticles()">
+                    <option value="all">All</option>
+                    <option value="tech">Tech</option>
+                    <option value="health">Health</option>
+                    <option value="science">Science</option>
+                </select>
+            </div>
+
+            <div class="search">
+                <label for="search">Search:</label>
+                <input type="text" id="search" name="search" onkeyup="searchArticles()" placeholder="Search for articles...">
+            </div>
+
+            <div id="articles">
+                <!-- Articles will be dynamically inserted here -->
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        const articles = [
+            { title: "Tech Article 1", category: "tech" },
+            { title: "Health Article 1", category: "health" },
+            { title: "Science Article 1", category: "science" },
+            { title: "Tech Article 2", category: "tech" },
+            { title: "Health Article 2", category: "health" },
+        ];
+
+        function displayArticles(filteredArticles) {
+            const articlesDiv = document.getElementById('articles');
+            articlesDiv.innerHTML = '';
+            filteredArticles.forEach(article => {
+                const articleDiv = document.createElement('div');
+                articleDiv.textContent = article.title;
+                articlesDiv.appendChild(articleDiv);
+            });
+        }
+
+        function filterArticles() {
+            const category = document.getElementById('category').value;
+            const filteredArticles = category === 'all' ? articles : articles.filter(article => article.category === category);
+            displayArticles(filteredArticles);
+        }
+
+        function searchArticles() {
+            const searchQuery = document.getElementById('search').value.toLowerCase();
+            const filteredArticles = articles.filter(article => article.title.toLowerCase().includes(searchQuery));
+            displayArticles(filteredArticles);
+        }
+
+        // Initial display of all articles
+        displayArticles(articles);
+    </script>
+</body>
+</html>
+
+{% endblock %}
