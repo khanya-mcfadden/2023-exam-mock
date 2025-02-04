@@ -26,7 +26,7 @@
                     <option value="all">All</option>
                     <option value="tech">Tech</option>
                     <option value="health">Health</option>
-                    <option value="science">Science</option>
+                    <option value="global weather">global weather</option>
                 </select>
             </div>
 
@@ -36,7 +36,13 @@
                     placeholder="Search for articles...">
             </div>
 
+            <div id="new-articles">
+                <h2>Top 3 Newest Articles</h2>
+                <!-- Top 3 newest articles will be dynamically inserted here -->
+            </div>
+
             <div id="articles">
+                <h2>All Articles</h2>
                 <!-- Articles will be dynamically inserted here -->
             </div>
         </main>
@@ -45,19 +51,24 @@
 
     <script>
         const articles = [
-            { title: "Tech Article 1", category: "tech" },
-            { title: "Health Article 1", category: "health" },
-            { title: "Science Article 1", category: "science" },
-            { title: "Tech Article 2", category: "tech" },
-            { title: "Health Article 2", category: "health" },
+            { title: "how to deal with the winter season part 1", synopsis: "test test", category: "health", date: "2023-10-02" },
+            { title: "how to deal with the winter season part 2", synopsis: "test test", category: "health", date: "2023-10-01" },
+            { title: "Ice caps are melting in new articles findings", synopsis: "test test", category: "global weather", date: "2023-10-03" },
+            { title: "Global warming on the rise", synopsis: "test test", category: "global weather", date: "2023-10-04" }
         ];
 
-        function displayArticles(filteredArticles) {
-            const articlesDiv = document.getElementById('articles');
+        function displayArticles(filteredArticles, containerId) {
+            const articlesDiv = document.getElementById(containerId);
             articlesDiv.innerHTML = '';
             filteredArticles.forEach(article => {
                 const articleDiv = document.createElement('div');
-                articleDiv.textContent = article.title;
+                const articleLink = document.createElement('a');
+                articleLink.href = `/articles/${article.title.replace(/\s+/g, '-').toLowerCase()}`;
+                articleLink.textContent = article.title;
+                const articleSynopsis = document.createElement('p');
+                articleSynopsis.textContent = article.synopsis;
+                articleDiv.appendChild(articleLink);
+                articleDiv.appendChild(articleSynopsis);
                 articlesDiv.appendChild(articleDiv);
             });
         }
@@ -65,20 +76,26 @@
         function filterArticles() {
             const category = document.getElementById('category').value;
             const filteredArticles = category === 'all' ? articles : articles.filter(article => article.category === category);
-            displayArticles(filteredArticles);
+            displayArticles(filteredArticles, 'articles');
         }
 
         function searchArticles() {
             const searchQuery = document.getElementById('search').value.toLowerCase();
             const filteredArticles = articles.filter(article => article.title.toLowerCase().includes(searchQuery));
-            displayArticles(filteredArticles);
+            displayArticles(filteredArticles, 'articles');
         }
 
-        // Initial display of all articles
-        displayArticles(articles);
+        function displayTopNewestArticles() {
+            const sortedArticles = articles.sort((a, b) => new Date(b.date) - new Date(a.date));
+            const topNewestArticles = sortedArticles.slice(0, 3);
+            displayArticles(topNewestArticles, 'new-articles');
+            displayArticles(sortedArticles.slice(3), 'articles');
+        }
+
+        // Initial display of top 3 newest articles
+        displayTopNewestArticles();
     </script>
 </body>
-
 
 </html>
 

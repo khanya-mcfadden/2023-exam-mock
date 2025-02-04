@@ -110,3 +110,4 @@ it returned :
 -had modifed sidbar css from the w3school fixed  sidebar tutorial link: https://www.w3schools.com/howto/howto_css_fixed_sidebar.asp
 -got image on main page form https://www.england.nhs.uk/gp/ page withg the link https://www.england.nhs.uk/wp-content/uploads/2019/09/our-practice-teams.gif
 got some other nhs images from https://www.istockphoto.com/photos/nhs?msockid=3227a07ef293639d2be9b512f35862ac
+look into https://chatgpt.com/share/67a226aa-cb68-8007-a674-c5f07394022b

@@ -63,6 +63,12 @@ p {
     padding: 0.5rem;
     border: 1px solid #ddd;
 }
+#new-articles div {
+    background: #fff;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+}
 .container {
     background: #f0f0f0;
     border: 3px solid #055dbcbb;
