@@ -56,14 +56,42 @@ website creation:
       ✔ create page functionality @done(25-01-29 09:41)
       ☐ test page
 
-    ☐ - compleation of weather page
+    ✔ - compleation of weather page @done(25-02-04 12:11)
+      ✔ create html page @done(25-02-04 12:11)
+      ✔ create css for page @done(25-02-04 12:11)
+      ✔ create js for page @done(25-02-04 12:11)
+      ✔ create page functionality @done(25-02-04 12:11)
+      ✔ test page @done(25-02-04 12:11)
+
+    ☐ - compleation of health page
+      ☐ create html page
+      ☐ create css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+      
+    ☐ compleation of profile page
       ☐ create html page
       ☐ create css for page
       ☐ create js for page
       ☐ create page functionality
       ☐ test page
 
-    ☐ - compleation of heakth page
+    ☐ compleation of admin page
+      ☐ create html page
+      ☐ create css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+
+    ☐ compleation of 404 page
+      ☐ create html page
+      ☐ create css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+
+    ☐ compleation of policys and conditon page
       ☐ create html page
       ☐ create css for page
       ☐ create js for page

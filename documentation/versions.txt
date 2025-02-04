@@ -50,3 +50,4 @@ added to login and sign up css, removed uneaded css and improved parts of the in
 04/02/2025
 added ai functinality 10:29am
 Add weather and AI response handling: implement weather data fetching, enhance AI interaction, and improve response formatting 11:50
+ articles page layout: update CSS for more responsive design, enhance HTML structure, and remove unused AI script
