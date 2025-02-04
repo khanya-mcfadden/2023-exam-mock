@@ -199,6 +199,10 @@
       document.getElementById("ai-response").innerHTML = "<p>You must type something in to get a response</p>";
       return;
     }
+    if (question.toLowerCase().includes("code")) {
+      document.getElementById("ai-response").innerHTML = "<p>Sorry, I can't assist with code-related questions.</p>";
+      return;
+    }
     document.getElementById("loading").style.display = "block"; // Show loading indicator
     fetch("/Ai_data", {
       method: "POST",

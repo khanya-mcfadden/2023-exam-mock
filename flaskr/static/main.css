@@ -1,4 +1,4 @@
- html {
+html {
   font-size: 16px;
   scroll-behavior: smooth;
 }
@@ -21,7 +21,7 @@
 }
 
 body {
-  background-color: #f4f4f4;
+  background-color: #ffffff;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -29,8 +29,6 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-
-
 
 .cookie-consent {
   display: none;
@@ -50,8 +48,6 @@ body {
   background-color: white;
   color: #333;
 }
-
- 
 
 .day {
   text-align: center;
@@ -94,7 +90,6 @@ body {
   font-size: 50px;
 }
 
-
 .health-advice {
   border-top: 1px solid #c9c8c8;
   padding-top: 20px;
@@ -118,7 +113,6 @@ body {
   background-color: #7f7f7f;
   color: black;
 }
-
 
 .nav {
   align-items: center;
@@ -243,7 +237,7 @@ h2 {
   width: 50%;
   margin-bottom: 0px;
   flex-direction: column;
-  background-color: #0098db;
+  background-color: #39b5e8;
   text-align: center;
 }
 
@@ -257,7 +251,7 @@ h2 {
   width: 50%;
   margin-bottom: 0px;
   flex-direction: column;
-  background-color: #0098db;
+  background-color: #39b5e8;
   text-align: center;
 }
 
@@ -323,7 +317,7 @@ footer {
   left: 0;
   width: 100%;
   padding: 10px;
-  background: #ffffff;
+  background: #f7f7f7;
   text-align: center;
   color: #000000;
   margin-top: 5rem;
@@ -336,7 +330,7 @@ footer {
   max-width: 1200px;
   margin: auto;
 }
-  
+
 .footer-column {
   flex: 1;
   min-width: 150px;
@@ -403,6 +397,22 @@ footer {
 }
 
 clours1 {
-  color: #fff #c9c8c8 #aaaaaa #7f7f7f #000 #00ffff #39b5e8 #0098db #0571d2
-    #055cbc #034082 #012246 #00a499 #056948 #009633 #77c001 #fbe201 #b21f75;
-} 
+  color: #fff 
+  #c9c8c8 
+  #aaaaaa 
+  #7f7f7f 
+  #000 
+  #00ffff 
+  #39b5e8 
+  #0098db 
+  #0571d2  
+  #055cbc
+  #034082 
+  #012246 
+  #00a499 
+  #056948 
+  #009633 
+  #77c001 
+  #fbe201 
+  #b21f75;
+}
