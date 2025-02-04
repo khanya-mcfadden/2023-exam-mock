@@ -1,0 +1,110 @@
+2023 mock tasks:
+website creation:
+  ☐ website page creation
+    ☐ - compleation of home assessment info page
+      ☐ create html page
+      ☐ create css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+      
+    ☐ - compleation of asssesment booking page
+      ✔ create html page @done(25-01-31 09:38)
+      ☐ create js for page
+      ☐ create css for page
+        ☐ edit css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+
+    ✔ - compleation of login page @done(28-01-2025 09:36)
+    
+      ✔ create html page @done(25-01-31 09:36)
+        ✔ create css for page @done(25-01-31 09:36)
+      ✔ create js for page @done(25-01-31 09:36)
+      ✔ create page functionality @done(25-01-31 09:36)
+      ☐ test page
+
+    ✔ - compleation of registration page @done(28-01-2025 09:36)
+      ✔ create html page @done(28-01-2025 09:36)
+        ✔ finish html page @done(25-01-29 09:42)
+      ✔ create css for page @done(28-01-2025 09:36)
+      ✔ create js for page @done(28-01-2025 09:36)
+      ✔ create page functionality @done(28-01-2025 09:36)
+      ☐ test page
+        ✔ test page functionality @done(25-01-31 09:37)
+        ✔ test page design @done(25-01-31 09:37)
+        ✔ test page responsiveness @done(25-01-31 09:37)
+        ✔ test page speed @done(25-01-31 09:38)
+        ✔ test invalid inputs @done(25-01-31 09:39)
+        ✔ test valid inputs @done(25-01-31 09:40)
+
+        
+
+    ✔ - compleation of home page @done(25-01-29 09:39)
+      ✔ create html page @done(25-01-29 09:39)
+      ✔ create css for page @done(25-01-29 09:39)
+      ✔ create js for page @done(25-01-29 09:39)
+      ✔ create page functionality @done(25-01-29 09:39)
+      ✔ test page @done(25-01-29 09:39)
+
+    ☐ - compleation of about page @started(25-01-29 09:41)
+      ✔ create base html page @done(25-01-29 09:41)
+        ☐ finish html page
+      ✔ create css for page @done(25-01-29 09:41)
+      ✔ create js for page @done(25-01-29 09:41)
+      ✔ create page functionality @done(25-01-29 09:41)
+      ☐ test page
+
+    ✔ - compleation of weather page @done(25-02-04 12:11)
+      ✔ create html page @done(25-02-04 12:11)
+      ✔ create css for page @done(25-02-04 12:11)
+      ✔ create js for page @done(25-02-04 12:11)
+      ✔ create page functionality @done(25-02-04 12:11)
+      ✔ test page @done(25-02-04 12:11)
+
+    ☐ - compleation of health page
+      ☐ create html page
+      ☐ create css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+      
+    ☐ compleation of profile page
+      ☐ create html page
+      ☐ create css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+
+    ☐ compleation of admin page
+      ☐ create html page
+      ☐ create css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+
+    ☐ compleation of 404 page
+      ☐ create html page
+      ☐ create css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+
+    ☐ compleation of policys and conditon page
+      ☐ create html page
+      ☐ create css for page
+      ☐ create js for page
+      ☐ create page functionality
+      ☐ test page
+
+loging and documentation:
+    ☐ finish documentation
+      ☐ finish loging of used assessets 
+      ☐ finish loging of used code
+      ☐ finish loging of used resources
+    ☐ finish loging of versions and updates
+      ☐ document version 1.0.0 to 1.1.0
+        ☐ give reasoning and description of changes made
+      ☐ document version 1.1.0 to 1.2.0
+        ☐ give reasoning and description of changes made

@@ -7,11 +7,11 @@ def delete_users_table():
         cursor = conn.cursor()
 
         # Drop the users table
-        cursor.execute("DROP TABLE IF EXISTS users")
+        cursor.execute("DROP TABLE IF EXISTS courses")
 
         # Commit the changes
         conn.commit()
-        print("Users table deleted successfully.")
+        print("courses table deleted successfully.")
 
     except sqlite3.Error as error:
         print("Error while connecting to sqlite", error)

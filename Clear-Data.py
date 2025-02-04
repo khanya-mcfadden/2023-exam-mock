@@ -10,7 +10,7 @@ def clear_users_table():
         # Clear data from the users table
         cursor.execute("DELETE FROM user")
         cursor.execute("DELETE FROM bookings")
-        cursor.execute("DELETE FROM courses")
+        cursor.execute("DELETE FROM articles")
 
         # Commit the changes
         conn.commit()

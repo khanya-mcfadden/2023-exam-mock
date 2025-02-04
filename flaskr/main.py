@@ -29,12 +29,11 @@ def init_db():
     cursor.execute(
         "CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, username TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, admin BOOLEAN NOT NULL DEFAULT FALSE)"
     )
+
     cursor.execute(
-        "create table if not exists courses (course_id INTEGER PRIMARY KEY, course_name TEXT NOT NULL, course_description TEXT NOT NULL,course_duration TEXT NOT NULL)"
+        "CREATE TABLE IF NOT EXISTS bookings (booking_id INTEGER PRIMARY KEY, assesor text, username text, date TEXT, time TEXT, FOREIGN KEY(username) REFERENCES user(username))"
     )
-    cursor.execute(
-        "CREATE TABLE IF NOT EXISTS bookings (booking_id INTEGER PRIMARY KEY, courses text, username text, date TEXT, time TEXT, FOREIGN KEY(username) REFERENCES user(username))"
-    )
+
     connection.commit()
     connection.commit()
     connection.close()
@@ -83,11 +82,11 @@ def BookingPage_page():
         return redirect(url_for("login"))
 
     if request.method == "POST":
-        course = request.form.get("courses")
+        assesor = request.form.get("assesor")
         date = request.form.get("date")
         time = request.form.get("time")
 
-        if not course or not date or not time:
+        if not assesor or not date or not time:
             return "Please fill out all fields", 400
 
         connection = sqlite3.connect("user.db")
@@ -98,7 +97,7 @@ def BookingPage_page():
             """
             CREATE TABLE IF NOT EXISTS bookings (
                 booking_id INTEGER PRIMARY KEY,
-                courses TEXT NOT NULL,
+                assesor id INTEGER,
                 date TEXT NOT NULL,
                 time TEXT NOT NULL,
                 username TEXT NOT NULL,
@@ -110,8 +109,8 @@ def BookingPage_page():
         try:
             # Insert the booking
             cursor.execute(
-                "INSERT INTO bookings (courses, date, time, username) VALUES (?, ?, ?, ?)",
-                (course, date, time, session.get("username")),
+                "INSERT INTO bookings (assesor, date, time, username) VALUES (?, ?, ?, ?)",
+                (assesor, date, time, session.get("username")),
             )
             connection.commit()
             connection.close()
@@ -120,18 +119,16 @@ def BookingPage_page():
             connection.close()
             return f"Booking failed: {e}", 500
 
-    # Fetch available courses from the database
+    # Fetch available assesor from the database
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
-    cursor.execute(
-        "SELECT course_name FROM courses"
-    )  # Adjust table/column names as needed
-    courses = cursor.fetchall()
+    cursor.execute("SELECT name FROM assesor")  # Adjust table/column names as needed
+    booking = cursor.fetchall()
     connection.close()
 
     # Pass courses to the template
     return render_template(
-        "BookingPage.html", courses=[course[0] for course in courses]
+        "BookingPage.html", assesor=[assesor[0] for assesor in booking]
     )
 
 
@@ -194,21 +191,9 @@ def test_page():
     return render_template("test.html")
 
 
-@app.route("/about")
+@app.route("/about_page")
 def about_page():
     return render_template("about.html")
-
-
-@app.route("/courses")
-def get_courses():
-    conn = sqlite3.connect("user.db")
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT articles_id INTEGER PRIMARY KEY, articles text, writer text, date TEXT, time TEXT)"
-    )
-    courses = cursor.fetchall()
-    conn.close()
-    return render_template("courses_info.html", courses=courses)
 
 
 @app.route("/confirm")
@@ -246,7 +231,7 @@ def profile():
         return redirect(url_for("login"))
 
     # Fetch user-specific bookings
-    cursor.execute("SELECT courses, date FROM bookings WHERE username = ?", (username,))
+    cursor.execute("SELECT * FROM bookings WHERE username = ?", (username,))
     bookings = cursor.fetchall()
     connection.close()
 
@@ -449,86 +434,64 @@ def users_info():
         cursor.execute("SELECT id, username, email, admin FROM user")
         user = cursor.fetchall()
 
-        cursor.execute(
-            "SELECT booking_id, courses, username, date, time FROM bookings"
-        )
-        
+        cursor.execute("SELECT booking_id, assesor, username, date, time FROM bookings")
+
         bookings = cursor.fetchall()
-        
-        cursor.execute(
-            "SELECT course_id, course_name, course_description, course_duration FROM courses"
-        )
-        courses = cursor.fetchall()
 
         connection.close()
-        return render_template("users_info.html", user=user, courses=courses, bookings=bookings)
+        return render_template("users_info.html", user=user, bookings=bookings)
     except sqlite3.Error as e:
         return f"Database error: {str(e)}", 500
 
 
-
-@app.route("/add_course", methods=["POST"])
-def add_course():
-    if "username" not in session or not session.get("admin"):
+@app.route("/add_booking", methods=["POST"])
+def add_booking():
+    if "username" not in session:
         return redirect(url_for("login"))
 
-    course_name = request.form.get("course_name")
-    course_description = request.form.get("course_description")
-    course_duration = request.form.get("courses")
+    assesor = request.form.get("assesor")
+    date = request.form.get("date")
+    time = request.form.get("time")
 
-    if not course_name or not course_description or not course_duration:
+    if not assesor or not date or not time:
         return "Please fill out all fields", 400
 
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
 
-    # Create courses table if it doesn't exist
-    cursor.execute(
-        """
-        CREATE TABLE IF NOT EXISTS courses (
-            course_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            course_name TEXT NOT NULL,
-            course_description TEXT NOT NULL,
-            course_duration INTEGER NOT NULL
-        )
-    """
-    )
-
     try:
-        # Insert the new course
+        # Insert the new booking
         cursor.execute(
-            "INSERT INTO courses (course_name, course_description, course_duration) VALUES (?, ?, ?)",
-            (course_name, course_description, course_duration),
+            "INSERT INTO bookings (assesor, date, time, username) VALUES (?, ?, ?, ?)",
+            (assesor, date, time, session.get("username")),
         )
         connection.commit()
         connection.close()
-        return redirect("/userinfo.html")
+        return redirect("/profile")
     except sqlite3.Error as e:
         connection.close()
-        return f"Failed to add course: {e}", 500
+        return f"Failed to add booking: {e}", 500
 
 
-@app.route("/delete_course", methods=["POST"])
-def delete_course():
-    if "username" not in session or not session.get("admin"):
+@app.route("/delete_booking", methods=["POST"])
+def delete_booking():
+    if "username" not in session:
         return redirect(url_for("login"))
 
-    course_id = request.form.get("course_id")
-
-    if not course_id:
-        return "Please provide a course ID", 400
+    booking_id = request.form.get("booking_id")
+    if not booking_id:
+        return "Please provide a booking ID", 400
 
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
-
     try:
-        cursor.execute("DELETE FROM courses WHERE course_id = ?", (course_id,))
+        cursor.execute("DELETE FROM bookings WHERE booking_id = ?", (booking_id,))
         connection.commit()
         connection.close()
-        return redirect("/userinfo")
+        return redirect("/profile")
     except sqlite3.Error as e:
         connection.close()
-        return f"Failed to delete course: {e}", 500
+        return f"Failed to delete booking: {e}", 500
 
 
 @app.route("/delete_user", methods=["POST"])
@@ -548,10 +511,10 @@ def delete_user():
         cursor.execute("DELETE FROM user WHERE id = ?", (user_id,))
         connection.commit()
         connection.close()
-        return redirect("/userinfo")
+        return redirect("/usersinfo")
     except sqlite3.Error as e:
         connection.close()
-        return f"Failed to delete user: {e}", 500
+        return f"Failed to delete user: {e}", 500  # Internal server error
 
 
 @app.route("/set_cookie", methods=["POST"])
@@ -577,15 +540,15 @@ def search():
     )
     user = cursor.fetchall()
 
-    # Search courses
+    # Search bookings
     cursor.execute(
-        "SELECT course_id, course_name, course_description FROM courses WHERE LOWER(course_name) LIKE ? OR LOWER(course_description) LIKE ?",
+        "SELECT booking_id, assesor, username, date, time FROM bookings WHERE LOWER(bookings) LIKE ? OR LOWER(username) LIKE ?",
         (f"%{query}%", f"%{query}%"),
     )
-    courses = cursor.fetchall()
+    bookings = cursor.fetchall()
 
     connection.close()
-    return jsonify({"user": user, "courses": courses})
+    return jsonify({"user": user, "bookings": bookings})
 
 
 @app.route("/favicon.ico")
@@ -605,13 +568,100 @@ def weather_page():
 @app.route("/weather_data")
 def get_weather_data():
     api_key = "0f98d01acd0e41818d8124023242111"
-    url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q=horsham&days=4&aqi=no"
+    location = request.args.get(
+        "location", "horsham"
+    )  # Get location from query params, default to horsham
+    url = f"https://api.weatherapi.com/v1/forecast.json?key={api_key}&q={location}&days=4&aqi=no"
     try:
         response = requests.get(url)
         response.raise_for_status()  # Raises an HTTPError if the status is 4xx, 5xx
         return jsonify(response.json())
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Failed to fetch weather data", "details": str(e)})
+
+
+@app.route("/Ai_data", methods=["POST"])
+def get_Ai():
+    import google.generativeai as genai
+    from flask import request, jsonify
+
+    genai.configure(api_key="AIzaSyCVadfEkISEXbfrKKWoXBgz2sCbFxMjLPY")
+
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    chat = model.start_chat(
+        history=[
+            {"role": "user", "parts": "Hello"},
+            {
+                "role": "model",
+                "parts": "Great to meet you. What would you like to know?",
+            },
+        ]
+    )
+
+    data = request.get_json()
+    question = data.get("question")
+
+    response = chat.send_message(question)
+    response_text = response.text
+
+    # Function to check if the response is related to weather or health
+    def is_relevant_response(response):
+        health_keywords = [
+            "health",
+            "wellness",
+            "fitness",
+            "hydration",
+            "nutrition",
+            "hypothermia",
+            "illness",
+            "disease",
+            "symptoms",
+            "treatment",
+            "medicine",
+            "doctor",
+            "hospital",
+            "emergency",
+            "injury",
+            "pain",
+            "recovery",
+            "therapy",
+            "mental health",
+            "physical health",
+        ]
+        weather_keywords = [
+            "weather",
+            "temperature",
+            "forecast",
+            "rain",
+            "snow",
+            "sunny",
+            "cloudy",
+            "storm",
+            "wind",
+            "humidity",
+            "climate",
+        ]
+        return any(keyword in response.lower() for keyword in health_keywords + weather_keywords)
+
+    # Filter the response
+    if is_relevant_response(response_text):
+        return jsonify(
+            {
+                "response1": response_text,
+            }
+        )
+    else:
+        return jsonify(
+            {
+                "response1": "Sorry, I can only talk about weather or health.",
+                "response2": "",
+            }
+        )
+
+
+@app.route("/articles_page")
+def articles_page():
+    return render_template("articles.html")
 
 
 # Error handler for 404
