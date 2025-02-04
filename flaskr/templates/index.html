@@ -56,12 +56,10 @@
   <div class="gradient-navbar"></div>
 
   {% block content %}
-  <div style="text-align: center; padding: 20px; overflow: hidden">
-    <p>We are glad to have you here. Explore and enjoy your stay!</p>
-    <div style="display: flex; justify-content: center; gap: 20px">
-      <img src="/static/image 1(coding child).png" alt="Image 1" style="width: auto; height: auto" />
-      <img src="/static/image 2(teacher and kids).png" alt="Image 2" style="width: auto; height: auto" />
-    </div>
+  <div
+    style="background-image: url('/static/walking.jpg'); background-size: cover; width: 100%; height: auto; text-align: center; padding: 20px; overflow: hidden">
+    <p style="font-size: 5rem;">We are glad to have you here. Explore and enjoy your stay!</p>
+
   </div>
   <!-- titles -->
   <div style="display: flex; justify-content: space-between; width: 100%;">
@@ -248,7 +246,7 @@
           headers: {
             "Content-Type": "application/json"
           },
-            body: JSON.stringify({ question: `What is the current general weather advice or recommendations for ${location}? Keep it under 150 words. Recommend that the user goes to the weather page on the current website for more details. as well as the met office` })
+          body: JSON.stringify({ question: `What is the current general weather advice or recommendations for ${location}? Keep it under 150 words. Recommend that the user goes to the weather page on the current website for more details. as well as the met office` })
         })
           .then((response) => {
             if (!response.ok) {
