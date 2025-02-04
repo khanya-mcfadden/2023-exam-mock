@@ -122,9 +122,7 @@ def BookingPage_page():
     # Fetch available assesor from the database
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
-    cursor.execute(
-        "SELECT name FROM assesor"
-    )  # Adjust table/column names as needed
+    cursor.execute("SELECT name FROM assesor")  # Adjust table/column names as needed
     booking = cursor.fetchall()
     connection.close()
 
@@ -198,9 +196,6 @@ def about_page():
     return render_template("about.html")
 
 
-
-
-
 @app.route("/confirm")
 def confirm():
     return render_template("confirm.html")
@@ -239,7 +234,7 @@ def profile():
     cursor.execute("SELECT * FROM bookings WHERE username = ?", (username,))
     bookings = cursor.fetchall()
     connection.close()
-    
+
     return render_template("profile.html", username=username, bookings=bookings)
 
 
@@ -449,7 +444,6 @@ def users_info():
         return f"Database error: {str(e)}", 500
 
 
-
 @app.route("/add_booking", methods=["POST"])
 def add_booking():
     if "username" not in session:
@@ -483,11 +477,11 @@ def add_booking():
 def delete_booking():
     if "username" not in session:
         return redirect(url_for("login"))
-    
+
     booking_id = request.form.get("booking_id")
     if not booking_id:
         return "Please provide a booking ID", 400
-    
+
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
     try:
@@ -585,9 +579,65 @@ def get_weather_data():
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Failed to fetch weather data", "details": str(e)})
 
+
+@app.route("/Ai_data", methods=["POST"])
+def get_Ai():
+    import google.generativeai as genai
+    from flask import request, jsonify
+
+    genai.configure(api_key="AIzaSyCVadfEkISEXbfrKKWoXBgz2sCbFxMjLPY")
+
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    chat = model.start_chat(
+        history=[
+            {"role": "user", "parts": "Hello"},
+            {
+                "role": "model",
+                "parts": "Great to meet you. What would you like to know?",
+            },
+        ]
+    )
+
+    data = request.get_json()
+    question = data.get("question")
+
+    response = chat.send_message(question)
+    response_text = response.text
+
+    # Function to check if the response is related to weather or health
+    def is_relevant_response(response):
+        keywords = [
+            "weather",
+            "temperature",
+            "forecast",
+            "health",
+            "wellness",
+            "fitness",
+            "hydration",
+            "nutrition",
+        ]
+        return any(keyword in response.lower() for keyword in keywords)
+
+    # Filter the response
+    if is_relevant_response(response_text):
+        return jsonify(
+            {
+                "response1": response_text,
+            }
+        )
+    else:
+        return jsonify(
+            {
+                "response1": "Sorry, I can only talk about weather or health.",
+                "response2": "",
+            }
+        )
+
+
 @app.route("/articles_page")
 def articles_page():
     return render_template("articles.html")
+
 
 # Error handler for 404
 @app.errorhandler(404)
