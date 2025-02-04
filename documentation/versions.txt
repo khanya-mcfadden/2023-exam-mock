@@ -42,3 +42,9 @@ added to weather page
 fixed login system
 tested booking system(non functinal)
 finished adding links to pages
+
+03/02/2025
+version 0.1.4
+added to login and sign up css, removed uneaded css and improved parts of the index page like the title
+
+04/02/2025
