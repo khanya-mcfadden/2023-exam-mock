@@ -56,48 +56,51 @@
   <div class="gradient-navbar"></div>
 
   {% block content %}
+    <p style="font-size: 2.5rem; text-align: center; color: #003348;">
+      We are glad to have you here. Explore and enjoy your stay!
+    </p>
+ 
   <div
-    style="background-image: url('/static/walking.jpg'); background-size: cover; width: 100%; height: auto; text-align: center; padding: 20px; overflow: hidden">
-    <p style="font-size: 5rem;">We are glad to have you here. Explore and enjoy your stay!</p>
+    style="background-image: url('/static/istockphoto-1299926607-2048x2048.jpg'); background-size: cover; width: 100%; height: auto; text-align: center; padding: 20px; overflow: hidden">
 
-  </div>
-  <!-- titles -->
-  <div style="display: flex; justify-content: space-between; width: 100%;">
-    <div id="season_title" class="season_title" style="height: auto; width: 50%">
-      <h1>How to deal with the season:</h1>
-    </div>
 
-    <div id="Ai_title" class="Ai_title" style="height: auto; width: 50%">
-      <h1>How to deal with the season ai edition:</h1>
-    </div>
-  </div>
-
-  <!-- seasonal advice containers -->
-  <div style="display: flex; justify-content: space-between; width: 100%;">
-    <!-- non ai -->
-    <div class="container" style="height: auto; width: 50%">
-      <h2><span id="season"></span></h2>
-      <div class="advice-box" id="advice-box"></div>
-    </div>
-    <!-- ai -->
-    <div class="container" style="height: auto; width: 50%">
-      <h2>questions chat bot</h2>
-      <div id="loading" style="display: none; text-align: center;">
-        <p>Loading...</p>
+    <!-- titles -->
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+      <div id="season_title" class="season_title" style="height: auto; width: 50%">
+        <h1>How to deal with the season:</h1>
       </div>
-      <div id="ai-response" class="ai-response" style="font-size: larger"></div>
-      <input type="text" id="ai-question" placeholder="Ask a question..." style="bottom: 0;" />
 
-      <button type="submit" style="padding: 10px;">Ask</button>
-
+      <div id="Ai_title" class="Ai_title" style="height: auto; width: 50%">
+        <h1>How to deal with the season ai edition:</h1>
+      </div>
     </div>
+
+    <!-- seasonal advice containers -->
+    <div style="display: flex; justify-content: space-between; width: 100%; ">
+      <!-- non ai -->
+      <div class="container" style="height: auto; width: 50%; background-color: #fff;">
+        <h2><span id="season"></span></h2>
+        <div class="advice-box" id="advice-box"></div>
+      </div>
+      <!-- ai -->
+      <div class="container" style="height: auto; width: 50%; background-color: #fff;">
+        <h2>questions chat bot</h2>
+        <div id="loading" style="display: none; text-align: center;">
+          <p>Loading...</p>
+        </div>
+        <div id="ai-response" class="ai-response" style="font-size: larger"></div>
+        <input type="text" id="ai-question" placeholder="Ask a question..." style="bottom: 0;" />
+
+        <button type="submit" style="padding: 10px;">Ask</button>
+
+      </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+
+
   </div>
-
-
-  <div class="clearfix"></div>
-
-
-
   <!-- cookies -->
   {% if not request.cookies.get('cookie_consent') %}
   <div id="cookie-consent" class="cookie-consent" style="
