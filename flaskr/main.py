@@ -606,17 +606,42 @@ def get_Ai():
 
     # Function to check if the response is related to weather or health
     def is_relevant_response(response):
-        keywords = [
-            "weather",
-            "temperature",
-            "forecast",
+        health_keywords = [
             "health",
             "wellness",
             "fitness",
             "hydration",
             "nutrition",
+            "hypothermia",
+            "illness",
+            "disease",
+            "symptoms",
+            "treatment",
+            "medicine",
+            "doctor",
+            "hospital",
+            "emergency",
+            "injury",
+            "pain",
+            "recovery",
+            "therapy",
+            "mental health",
+            "physical health",
         ]
-        return any(keyword in response.lower() for keyword in keywords)
+        weather_keywords = [
+            "weather",
+            "temperature",
+            "forecast",
+            "rain",
+            "snow",
+            "sunny",
+            "cloudy",
+            "storm",
+            "wind",
+            "humidity",
+            "climate",
+        ]
+        return any(keyword in response.lower() for keyword in health_keywords + weather_keywords)
 
     # Filter the response
     if is_relevant_response(response_text):

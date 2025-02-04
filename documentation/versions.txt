@@ -48,3 +48,4 @@ version 0.1.4
 added to login and sign up css, removed uneaded css and improved parts of the index page like the title
 
 04/02/2025
+added ai functinality 10:29am

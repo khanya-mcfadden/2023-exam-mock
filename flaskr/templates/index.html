@@ -84,14 +84,18 @@
     <!-- ai -->
     <div class="container" style="height: auto; width: 50%">
       <h2>questions chat bot</h2>
+      <div id="loading" style="display: none; text-align: center;">
+        <p>Loading...</p>
+      </div>
       <div id="ai-response" class="ai-response"></div>
-      <input type="text" id="ai-question" placeholder="Ask a question..." style="bottom: 0;"/>
+      <input type="text" id="ai-question" placeholder="Ask a question..." style="bottom: 0;" />
+
+
       <button type="submit" style="padding: 10px;">Ask</button>
+
     </div>
   </div>
-  <div id="loading" style="display: none; text-align: center;">
-    <p>Loading...</p>
-  </div>
+
 
   <div class="clearfix"></div>
 
@@ -176,7 +180,7 @@
 <!-- script for ai api -->
 <script>
   const submitButton = document.querySelector('button[type="submit"]');
-  submitButton.addEventListener('click', function(event) {
+  submitButton.addEventListener('click', function (event) {
     event.preventDefault();
     const question = document.getElementById('ai-question').value.trim();
     if (!question) {
@@ -191,19 +195,19 @@
       },
       body: JSON.stringify({ question: question })
     })
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById("loading").style.display = "none"; // Hide loading indicator
-      document.getElementById("ai-response").innerHTML = `
+      .then((response) => response.json())
+      .then((data) => {
+        document.getElementById("loading").style.display = "none"; // Hide loading indicator
+        document.getElementById("ai-response").innerHTML = `
         <p>${data.response1}</p>
         <p>${data.response2}</p>
       `;
-    })
-    .catch((error) => {
-      console.error("Error fetching AI data:", error);
-      document.getElementById("loading").style.display = "none"; // Hide loading indicator
-      document.getElementById("ai-response").innerHTML = "<p>Failed to load AI response</p>";
-    });
+      })
+      .catch((error) => {
+        console.error("Error fetching AI data:", error);
+        document.getElementById("loading").style.display = "none"; // Hide loading indicator
+        document.getElementById("ai-response").innerHTML = "<p>Failed to load AI response</p>";
+      });
   });
 </script>
 
