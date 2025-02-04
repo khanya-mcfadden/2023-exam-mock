@@ -663,7 +663,9 @@ def get_Ai():
 def articles_page():
     return render_template("articles.html")
 
-
+@app.route("/policy_page")
+def policy_page():
+    return render_template("policy.html")
 # Error handler for 404
 @app.errorhandler(404)
 def page_not_found(_):
