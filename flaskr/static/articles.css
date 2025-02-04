@@ -67,7 +67,7 @@ p {
     background: #f0f0f0;
     border: 3px solid #055dbcbb;
     flex-direction: column;
-    width: 400px;
+    width: 100%;
     margin-top: 500rem;
     height: 25rem;
     display: flex;

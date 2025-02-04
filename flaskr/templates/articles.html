@@ -4,18 +4,20 @@
 {% block title %}unfinished{% endblock %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Articles Page</title>
     <link rel="stylesheet" href="/static/articles.css">
 </head>
+
 <body>
     <header>
-        <h1><u>Articles</u></h1>
+        <h1 style="height: 100px; font-size: 50px; text-align: center;">
+            <u>Articles</u>
+        </h1>
     </header>
+
     <div class="container">
         <main>
             <div class="search-section">
@@ -30,7 +32,8 @@
 
             <div class="search">
                 <label for="search">Search:</label>
-                <input type="text" id="search" name="search" onkeyup="searchArticles()" placeholder="Search for articles...">
+                <input type="text" id="search" name="search" onkeyup="searchArticles()"
+                    placeholder="Search for articles...">
             </div>
 
             <div id="articles">
@@ -75,6 +78,7 @@
         displayArticles(articles);
     </script>
 </body>
-</html>
 
+
+</html>
 {% endblock %}
