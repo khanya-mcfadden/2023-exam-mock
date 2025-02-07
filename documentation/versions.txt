@@ -53,3 +53,9 @@ Add weather and AI response handling: implement weather data fetching, enhance A
  articles page layout: update CSS for more responsive design, enhance HTML structure, and remove unused AI script
 
 created policy page 
+
+07/02/2025
+versions 0.1.5
+index.html: clean up navbar formatting for improved readability
+created global warming page
+fixed globale warming page

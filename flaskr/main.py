@@ -673,6 +673,18 @@ def global_warming_article():
     return render_template("global_warming_rise.html")
 
 
+
+@app.route("/articles/how-to-deal-with-the-winter-season-part-1")
+def winter_article_part1():
+    return render_template("winter-season-part-1.html")
+
+
+@app.route("/articles/how-to-deal-with-the-winter-season-part-2")
+def winter_article_part2():
+    return render_template("winter-season-part-2.html")
+
+
+
 # Error handler for 404
 @app.errorhandler(404)
 def page_not_found(_):

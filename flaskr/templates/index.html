@@ -31,8 +31,8 @@
       </div>
     </div>
   </div>
-  <nav class=" navbar">
-  </nav>
+  <nav class=" navbar">  </nav>
+
   <nav class="nav">
     <!-- base page links -->
     <a href="/" style="color: #0571d2; font-size: 1.5em">Home</a>
@@ -222,9 +222,9 @@
         console.log("AI data received:", data); // Log the data received
         document.getElementById("loading").style.display = "none"; // Hide loading indicator
         const response1 = data.response1 ? data.response1.replace(/\*/g, '') : 'No response1 available';
-        document.getElementById("ai-response").innerHTML = `
-        <p>${response1}</p>
-      `;
+        const truncatedResponse = response1.split(' ').slice(0, 200).join(' ') + '...';
+        document.getElementById("ai-response").innerHTML = `<p>${truncatedResponse}</p>`;
+
       })
       .catch((error) => {
         console.error("Error fetching AI data:", error);
@@ -232,6 +232,7 @@
         document.getElementById("ai-response").innerHTML = "<p>Failed to load AI response</p>";
       });
   });
+
 
   // Function to fetch general health recommendation based on location on page load from 
   window.onload = function () {

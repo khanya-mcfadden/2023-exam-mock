@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+
+{% block title %}Global Warming Article{% endblock %}
+
+{% block content %}
+<html>
+
+<head>
+    <title>winter season advice part 1</title>
+</head>
+
+<body>
+
+    <article>
+        <h1>
+            <div class="headline-1">
+                winter season advice part-1:
+            </div>
+            <div class="headline-2">
+                Winter vaccinations and winter health
+            </div>
+        </h1>
+        <p class="subheading">
+            There are some things you can do to help yourself stay well in winter. This includes getting your flu and
+            COVID-19 vaccinations.
+        </p>
+        <hr />
+        <section>
+            <p>
+                Flu and COVID-19 vaccinations
+                It's important to get your winter flu and COVID-19 vaccinations if you're eligible. Getting vaccinated
+                every year will top up your protection and reduce your risk of getting severe symptoms.
+
+                Who should have the flu vaccine
+                You can get the NHS flu vaccine if you:
+
+                are aged 65 or over (including those who will be 65 by 31 March 2025)
+                have certain long-term health conditions
+                are pregnant
+                live in a care home
+                are the main carer for an older or disabled person, or receive a carer's allowance
+                live with someone who has a weakened immune system
+                Children aged 2 or 3 years can get the children's flu vaccine.
+
+                Frontline health and social care workers can also get a flu vaccine through their employer.
+            </p>
+            <img alt=""
+                src="https://th.bing.com/th/id/OIP.L-oUK0WbomZFkpsisA4B9wHaLG?w=203&h=304&c=7&r=0&o=5&pid=1.7" />
+            <p>
+                How to get the flu vaccine
+                If you're eligible for an NHS flu vaccine, you can:
+
+                find a pharmacy that offers NHS flu vaccination (if you're aged 18 or over)
+                contact your GP surgery to book an appointment
+                Some people may be able to get vaccinated through their maternity service or care home.
+
+                Children aged 2 and 3 years old can get the children's flu vaccine at their GP surgery.
+
+                The last date you will be able to get your flu vaccination is 31 March 2025, but it's best to get
+                vaccinated sooner to protect yourself during winter.
+            </p>
+            <p>
+                Other vaccinations
+                You may also be eligible for other vaccinations, including the:
+
+                pneumococcal vaccine (if you're aged 65 or over)
+                RSV vaccine (if you're pregnant or aged 75 to 79 – if you turned 80 on or after 1 September 2024, you're
+                also eligible for the vaccine until 31 August 2025)
+                These vaccinations help protect against serious illnesses that are more common in the winter, including
+                pneumonia.
+            </p>
+
+            <img alt="Tank"
+                src="https://th.bing.com/th/id/OIP.uRf2yjeyOV00_0nJhUfS5wHaFj?w=263&h=197&c=7&r=0&o=5&pid=1.7"
+                style="height: auto; width:auto" />
+            <p>
+                Get advice if you feel unwell
+                If you're 65 or over, or in one of the other at-risk groups, it's important to get medical help as soon
+                as you feel unwell.
+
+                You can get help and advice from:
+
+                a pharmacy – pharmacists can give treatment advice for a range of minor illnesses and can tell you if
+                you need to see a doctor
+                your GP – you may be able to speak to a GP online or over the phone, or go in for an appointment if they
+                think you need to
+                NHS 111 – go to 111.nhs.uk or call 111 if you have an urgent medical problem and you are not sure what
+                to do
+                The sooner you get advice, the sooner you're likely to get better.
+
+                In an emergency, go to A&E immediately or call 999.
+
+
+                Keep warm and get help with heating
+                Keeping warm over the winter months can help to prevent colds, flu and more serious health problems such
+                as heart attacks, strokes, pneumonia and depression.
+
+                Heat your home to a temperature that's comfortable for you. If you can, this should be at least 18°C in
+                the rooms that you regularly use, such as your living room and bedroom. This is particularly important
+                if you have a health condition. It's best to keep your bedroom windows closed at night.
+
+                Check your heating and cooking appliances are safe. Contact a Gas Safe registered engineer to make sure
+                they're working properly. You can find an engineer from the Gas Safe Register website.
+            </p>
+        </section>
+        <footer style="background-color: #fff;">
+            <p>
+                this article is from https://www.nhs.uk/live-well/seasonal-health/keep-warm-keep-well/, please
+                visit the website for more information
+            </p>
+        </footer>
+    </article>
+    <style>
+        .profile {
+            width: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            height: auto;
+            align-content: center;
+            text-align: center;
+        }
+
+        hr {
+            overflow: visible;
+            padding: 0;
+            border: none;
+            border-top: medium double #333;
+            color: #333;
+            text-align: center;
+        }
+
+        hr:after {
+            content: "§";
+            display: inline-block;
+            position: relative;
+            top: -0.7em;
+            font-size: 1.5em;
+            padding: 0 0.25em;
+            background: #cccccc;
+        }
+
+        article {
+            color: #333;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            max-width: 66em;
+        }
+
+        header {
+            text-align: center;
+            padding: 0 2em;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-weight: 400;
+            text-align: center;
+
+            .headline-1,
+            .headline-2 {
+                line-height: 1;
+            }
+
+            .headline-1 {
+                font-size: 5rem;
+            }
+
+            .headline-2 {
+                font-size: 3rem;
+            }
+        }
+
+        .subheading {
+            color: #ccc;
+            font-size: 1rem;
+            max-width: auto;
+            margin: 0 auto;
+            text-align: center;
+            padding-bottom: 1.5em;
+        }
+
+        section {
+            column-width: 14em;
+            column-gap: 1.33em;
+            padding: 0 3em;
+            text-align: center;
+
+            p:first-of-type:first-letter {
+                float: left;
+                font-size: 7em;
+                line-height: 1;
+                margin-top: -0.2em;
+                margin-bottom: -0.2em;
+                margin-right: 0.1em;
+            }
+        }
+
+        img {
+            max-width: 100%;
+            margin-bottom: 1.33em;
+            vertical-align: middle;
+        }
+
+        blockquote {
+            border-left: 0.5em solid #ccc;
+            font-size: 2em;
+            padding: 0.5em;
+            line-height: 1.5;
+            margin-left: 0;
+            margin-right: 0;
+            position: absolute;
+            right: 100%;
+            top: 70vh;
+            width: 9em;
+            background: #191919;
+            text-align: center;
+
+            &::before,
+            &::after {
+                color: #ccc;
+                font-size: 1.25em;
+                line-height: 0;
+            }
+
+            &::before {
+                content: open-quote;
+            }
+
+            &::after {
+                content: close-quote;
+            }
+        }
+    </style>
+</body>
+
+</html>
+{% endblock %}
