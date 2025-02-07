@@ -666,6 +666,13 @@ def articles_page():
 @app.route("/policy_page")
 def policy_page():
     return render_template("policy.html")
+
+# articles
+@app.route("/articles/global-warming-on-the-rise")
+def global_warming_article():
+    return render_template("global_warming_rise.html")
+
+
 # Error handler for 404
 @app.errorhandler(404)
 def page_not_found(_):

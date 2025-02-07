@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+{% extends "index.html" %} {% block title %}test{% endblock %}
+{% block content %}
+<html>
+<div class="profile"></div>
+<article>
+    <header>
+        <h1>
+            <div class="headline-1">
+                Global Warming Has Accelerated:
+            </div>
+            <div class="headline-2">
+                Are the United Nations and the Public Well-Informed?
+            </div>
+        </h1>
+        <p class="subheading">
+            writen by: James E. Hansen,Pushker Kharecha,Makiko Sato,George Tselioudis,Joseph Kelly,Susanne E. Bauer,Reto
+            Ruedy,Eunbi Jeong,Qinjian Jin,Eric Rignot,Isabella Velicogna,Mark R. Schoeberl,Karina von Schuckmann,Joshua
+            Amponsem,Junji Cao,Anton Keskinen,Jing Li &Anni Pokela
+        </p>
+    </header>
+    <hr />
+    <section>
+        <p>
+            Global temperature increased by more than 0.4°C (0.7°F) in the past two years, peaking in August 2024 at
+            +1.6°C compared to the early 20th century average (1880-1920). This rise was partly due to a tropical El
+            Niño event, but the magnitude was unexpectedly large. Scientists found that the other half of the warming
+            was caused by reduced aerosol emissions from ships, a regulation imposed in 2020 to improve human health.
+            Aerosols help form clouds that reflect sunlight, cooling the Earth. With fewer aerosols, there are fewer
+            clouds, leading to more sunlight absorption and increased warming. Ships are a major aerosol source in the
+            North Pacific and North Atlantic Oceans. Satellite data showed the largest effects in these regions. The
+            United Nations Intergovernmental Panel on Climate Change (IPCC) may have underestimated the cooling effect
+            of aerosols and thus the climate sensitivity.
+        </p>
+        <img alt=""
+            src="https://www.tandfonline.com/cms/asset/03108bbf-c589-49e9-960c-d42fd289b766/venv_a_2434494_ilg0001_c.jpg" />
+        <p>
+            The reduction in ship aerosols will continue to impact global warming, even as the tropical climate shifts
+            to a cooler La Niña phase. We expect global temperatures to remain around or above +1.5°C for the next few
+            years, supporting our findings on the recent rapid warming. High sea surface temperatures and ocean hotspots
+            will persist, harming coral reefs and marine life.
+
+            For humans, the most noticeable effects will be more frequent and severe climate extremes. This includes
+            stronger tropical storms, tornadoes, and thunderstorms, leading to more extreme floods. Higher global
+            temperatures will also intensify heat waves and droughts, including sudden "flash droughts" in areas with
+            otherwise sufficient rainfall.
+        </p>
+        <p>
+            Polar climate change has the greatest long-term effect on humanity, with impacts accelerated by the recent
+            rise in global temperature. Our findings show that polar ice melt and freshwater injection into the North
+            Atlantic Ocean are higher than previously estimated. Due to accelerated global warming, this melt will
+            continue to increase. Consequently, the shutdown of the Atlantic Meridional Overturning Circulation (AMOC)
+            is likely within the next 20-30 years unless actions are taken to reduce global warming. This contradicts
+            the conclusions of the IPCC. If the AMOC shuts down, it will cause significant issues, including a sea level
+            rise of several meters. Therefore, we describe the AMOC shutdown as the “point of no return.”
+        </p>
+
+        <img alt="Tank"
+            src="https://www.tandfonline.com/cms/asset/0c1c6482-8194-44e7-942f-07db38efbb03/venv_a_2434494_f0001_c.jpg" style="height: auto; width:auto" />
+        <p>
+            Global warming has accelerated significantly since 2010, increasing by more than 50% compared to the
+            1970-2010 rate of 0.18°C per decade. Earth is now warmer than at any time in the past 11,700 years, and it
+            is at least as warm as during the extreme warm period 120,000 years ago. The recent moderate El Niño
+            contributed to a 0.4°C increase in global temperature, a much greater warming than during previous strong El
+            Niños. This rapid warming has puzzled scientists, who have struggled to explain it with known mechanisms.
+            However, we conclude that human-made greenhouse gases and aerosols are the primary drivers of this observed
+            global temperature increase, including a significant rise in sea surface temperature that has led to the
+            widely discussed 1.5°C temperature threshold being effectively breached.
+        </p>
+    </section>
+    <footer style="background-color: #fff;">
+        <p>
+            this article is from https://www.tandfonline.com/doi/full/10.1080/00139157.2025.2434494#abstract, please
+            visit the website for more information
+        </p>
+    </footer>
+</article>
+<style>
+    html {
+        align-content: center;
+        text-align: center;
+    }
+
+    .profile {
+        width: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        height: auto;
+        align-content: center;
+        text-align: center;
+    }
+
+    hr {
+        overflow: visible;
+        padding: 0;
+        border: none;
+        border-top: medium double #333;
+        color: #333;
+        text-align: center;
+    }
+
+    hr:after {
+        content: "§";
+        display: inline-block;
+        position: relative;
+        top: -0.7em;
+        font-size: 1.5em;
+        padding: 0 0.25em;
+        background: #cccccc;
+    }
+
+    article {
+        color: #333;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        max-width: 66em;
+    }
+
+    header {
+        text-align: center;
+        padding: 0 2em;
+    }
+
+    h1 {
+        text-transform: uppercase;
+        font-weight: 400;
+        text-align: center;
+
+        .headline-1,
+        .headline-2 {
+            line-height: 1;
+        }
+
+        .headline-1 {
+            font-size: 5rem;
+        }
+
+        .headline-2 {
+            font-size: 3rem;
+        }
+    }
+
+    .subheading {
+        color: #ccc;
+        font-size: 1rem;
+        max-width: auto;
+        margin: 0 auto;
+        text-align: center;
+        padding-bottom: 1.5em;
+    }
+
+    section {
+        column-width: 14em;
+        column-gap: 1.33em;
+        padding: 0 3em;
+        text-align: center;
+
+        p:first-of-type:first-letter {
+            float: left;
+            font-size: 7em;
+            line-height: 1;
+            margin-top: -0.2em;
+            margin-bottom: -0.2em;
+            margin-right: 0.1em;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        margin-bottom: 1.33em;
+        vertical-align: middle;
+    }
+
+    blockquote {
+        border-left: 0.5em solid #ccc;
+        font-size: 2em;
+        padding: 0.5em;
+        line-height: 1.5;
+        margin-left: 0;
+        margin-right: 0;
+        position: absolute;
+        right: 100%;
+        top: 70vh;
+        width: 9em;
+        background: #191919;
+        text-align: center;
+
+        &::before,
+        &::after {
+            color: #ccc;
+            font-size: 1.25em;
+            line-height: 0;
+        }
+
+        &::before {
+            content: open-quote;
+        }
+
+        &::after {
+            content: close-quote;
+        }
+    }
+</style>
+
+</html>
+
+{% endblock %}
