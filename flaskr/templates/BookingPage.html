@@ -11,14 +11,14 @@
 
 <body>
     <form method="POST" action="/BookingPage">
-        <h1>Book a assesment!</h1>
-        <p>Welcome to our booking page! Please select a assesor and date to make a reservation:</p>
+        <h1>Book an assessment!</h1>
+        <p>Welcome to our booking page! Please select an assessor and date to make a reservation:</p>
         <ul style="list-style: none; padding: 0;">
             <li>
-                <label for="assesor">Select a assesor:</label>
+                <label for="assesor">Select an assessor:</label>
                 <select id="assesor" name="assesor" required>
-                    <option value="">Select a assesor</option>
-                    {% for assesor_name in assesor %}
+                    <option value="">Select an assessor</option>
+                    {% for assesor_name in assessors %}
                     <option value="{{ assesor_name }}">{{ assesor_name }}</option>
                     {% endfor %}
                 </select>
@@ -40,8 +40,9 @@
                 e.preventDefault();
                 const assesor = document.getElementById('assesor').value;
                 const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
 
-                if (!assesor || !date) {
+                if (!assesor || !date || !time) {
                     alert('Please fill in all fields before submitting.');
                     return;
                 }

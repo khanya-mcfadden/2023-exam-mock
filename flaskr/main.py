@@ -97,7 +97,7 @@ def BookingPage_page():
             """
             CREATE TABLE IF NOT EXISTS bookings (
                 booking_id INTEGER PRIMARY KEY,
-                assesor id INTEGER,
+                assesor TEXT NOT NULL,
                 date TEXT NOT NULL,
                 time TEXT NOT NULL,
                 username TEXT NOT NULL,
@@ -119,18 +119,17 @@ def BookingPage_page():
             connection.close()
             return f"Booking failed: {e}", 500
 
-    # Fetch available assesor from the database
+    # Fetch available assessors from the database
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT name FROM assesor")  # Adjust table/column names as needed
-    booking = cursor.fetchall()
+    cursor.execute("SELECT name FROM assesor WHERE is_available = 1")  # Adjust table/column names as needed
+    assessors = cursor.fetchall()
     connection.close()
 
-    # Pass courses to the template
+    # Pass assessors to the template
     return render_template(
-        "BookingPage.html", assesor=[assesor[0] for assesor in booking]
+        "BookingPage.html", assessors=[assessor[0] for assessor in assessors]
     )
-
 
 @app.route("/unfinishedpagepage", methods=["GET", "POST"])
 def unfinishedpage_page():
