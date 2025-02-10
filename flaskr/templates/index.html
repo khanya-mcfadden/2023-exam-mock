@@ -31,7 +31,7 @@
       </div>
     </div>
   </div>
-  <nav class=" navbar">  </nav>
+  <nav class=" navbar"> </nav>
 
   <nav class="nav">
     <!-- base page links -->
@@ -56,10 +56,10 @@
   <div class="gradient-navbar"></div>
 
   {% block content %}
-    <p style="font-size: 2.5rem; text-align: center; color: #003348;">
-      We are glad to have you here. Explore and enjoy your stay!
-    </p>
- 
+  <p style="font-size: 2.5rem; text-align: center; color: #003348;">
+    We are glad to have you here. Explore and enjoy your stay!
+  </p>
+
   <div
     style="background-image: url('/static/istockphoto-1299926607-2048x2048.jpg'); background-size: cover; width: 100%; height: auto; text-align: center; padding: 20px; overflow: hidden">
 
@@ -250,7 +250,11 @@
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ question: `What is the current general weather advice or recommendations for ${location}? Keep it under 150 words. Recommend that the user goes to the weather page on the current website for more details. as well as the met office` })
+          body: JSON.stringify({
+            question: `
+            What is the current general weather advice or recommendations for ${location}? Keep it under 150 words.
+             Recommend that the user goes to the weather page on the current website for more details. as well as the met office`
+          })
         })
           .then((response) => {
             if (!response.ok) {
