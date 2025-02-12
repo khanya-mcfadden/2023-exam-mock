@@ -19,8 +19,8 @@ from dotenv import load_dotenv
 load_dotenv() 
 
 app = Flask(__name__)
-app.secret_key = "1mads"
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.secret_key = os.getenv('SECRET_KEY', 'default_secret_key')
+app.config['SECRET_KEY'] = app.secret_key
 app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
 
 # Ensure the table is created when the app starts
