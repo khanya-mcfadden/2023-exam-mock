@@ -12,10 +12,10 @@
 <body>
     <form method="POST" action="/BookingPage">
         <h1>Book an assessment!</h1>
-        <p>Welcome to our booking page! Please select an assessor and date to make a reservation:</p>
+        <p style="font-size: 25px;">Welcome to our booking page! Please select an assessor and date to make a reservation:</p>
         <ul style="list-style: none; padding: 0;">
             <li>
-                <label for="assesor">Select an assessor:</label>
+                <label for="assesor" style="font-size: 30px;">Select an assessor:</label>
                 <select id="assesor" name="assesor" required>
                     <option value="">Select an assessor</option>
                     {% for assesor_name in assessors %}

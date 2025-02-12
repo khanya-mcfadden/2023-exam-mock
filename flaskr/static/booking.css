@@ -10,15 +10,15 @@ form {
 }
 
 h1 {
-    color: #908E8E;
+    color: #555555;
 }
 
 p {
-    color: #908E8E;
+    color: #555555;
 }
 
 label {
-    color: #908E8E;
+    color: #555555;
     display: block;
     margin-bottom: 5px;
 }
@@ -36,7 +36,7 @@ input[type="time"] {
 
 button {
     color: #fff;
-    background-color: #8f7ad6a3;
+    background-color: #7a82d6f1;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -46,7 +46,7 @@ button {
 }
 
 button:hover {
-    background-color: #7a68c1;
+    background-color: #5861ff;
 }
 
 @media (max-width: 600px) {
