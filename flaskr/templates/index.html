@@ -80,7 +80,7 @@
       <!-- non ai -->
       <div class="container" style="height: auto; width: 50%; background-color: #fff;">
         <h2><span id="season"></span></h2>
-        <div class="advice-box" id="advice-box"></div>
+        <div class="advice-box" id="advice-box" style="font-size: 30px"></div>
       </div>
       <!-- ai -->
       <div class="container" style="height: auto; width: 50%; background-color: #fff;">
@@ -91,7 +91,7 @@
         <div id="ai-response" class="ai-response" style="font-size: larger"></div>
         <input type="text" id="ai-question" placeholder="Ask a question..." style="bottom: 0;" />
 
-        <button type="submit" style="padding: 10px;">Ask</button>
+        <button type="submit" style="padding: 10px;font-size: 50px;">Ask</button>
 
       </div>
     </div>
@@ -217,7 +217,7 @@
         document.getElementById("loading").style.display = "none"; // Hide loading indicator
         const response1 = data.response1 ? data.response1.replace(/\*/g, '') : 'No response1 available';
         const truncatedResponse = response1.split(' ').slice(0, 200).join(' ') + '...';
-        document.getElementById("ai-response").innerHTML = `<p>${truncatedResponse}</p>`;
+        document.getElementById("ai-response").innerHTML = `<p style="font-size: 30px;">${truncatedResponse}</p>`;
 
       })
       .catch((error) => {
@@ -260,7 +260,7 @@
             console.log("AI data received on load:", data); // Log the data received
             const response1 = data.response1 ? data.response1.replace(/\*/g, '') : 'No response1 available';
             document.getElementById("ai-response").innerHTML = `
-              <p>${response1}</p>
+              <p style="font-size: 30px;;">${response1}</p>
             `;
           })
           .catch((error) => {

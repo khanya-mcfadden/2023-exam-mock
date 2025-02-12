@@ -15,11 +15,13 @@ from flask import (
 import requests
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
-
+from dotenv import load_dotenv
+load_dotenv() 
 
 app = Flask(__name__)
 app.secret_key = "1mads"
-
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
 
 # Ensure the table is created when the app starts
 def init_db():
@@ -70,10 +72,9 @@ def inject_user():
         "admin": session.get("admin", False),
     }
 
-
-@app.route("/")
+@app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template('index.html', secret_key=app.config['SECRET_KEY'])
 
 
 @app.route("/BookingPage", methods=["GET", "POST"])
