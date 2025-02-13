@@ -37,20 +37,21 @@
     <!-- base page links -->
     <a href="/" style="color: #0571d2; font-size: 1.5em">Home</a>
     <a href="/about_page" style="color: #0571d2; font-size: 1.5em">About</a>
-    <a href="/weather_page" style="color: #0571d2; font-size: 1.5em">weather</a>
+    <a href="/weather_page" style="color: #0571d2; font-size: 1.5em">Weather</a>
     <a href="/BookingPage" style="color: #0571d2; font-size: 1.5em">Booking</a>
     <a href="/articles_page" style="color: #0571d2; font-size: 1.5em">Articles</a>
     <!-- admin page links -->
     {% if admin %}
-    <a href="/usersinfo" style="color: #0571d2; font-size: 1.5em; margin-left: auto">User Info</a>
-    <a href="/test" style="color: #0571d2; font-size: 1.5em">Test</a>
-    <!-- loged in page lnks -->
+      <a href="/usersinfo" style="color: #0571d2; font-size: 1.5em; margin-left: auto">User Info</a>
+      <a href="/test" style="color: #0571d2; font-size: 1.5em">Test</a>
+    {% endif %}
+    <!-- logged in page links -->
     {% if authenticated %}
-    <a href="/profile" style="color: #0571d2; font-size: 1.5em">Profile</a>
-    <!-- pages that are only there when signed out -->
-    {% endif %} {% else %}
-    <a href="/Sign-Up" style="color: #0571d2; font-size: 1.5em; margin-left: auto">Sign Up</a>
-    <a href="/login" style="color: #0571d2; font-size: 1.5em">Login</a>
+      <a href="/profile" style="color: #0571d2; font-size: 1.5em">Profile</a>
+    {% else %}
+      <!-- pages that are only there when signed out -->
+      <a href="/Sign-Up" style="color: #0571d2; font-size: 1.5em; margin-left: auto">Sign Up</a>
+      <a href="/login" style="color: #0571d2; font-size: 1.5em">Login</a>
     {% endif %}
   </nav>
   <div class="gradient-navbar"></div>

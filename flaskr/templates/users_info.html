@@ -19,8 +19,11 @@ content %}
 
       <script>
         function searchTables() {
-          let input = document.getElementById("searchInput").value.toLowerCase();
-          let searchType = document.getElementById("searchType").value;
+          let inputElement = document.getElementById("searchInput");
+          let searchTypeElement = document.getElementById("searchType");
+          if (!inputElement || !searchTypeElement) return;
+          let input = inputElement.value.toLowerCase();
+          let searchType = searchTypeElement.value;
           let tables = document.getElementsByTagName("table");
 
           for (let table of tables) {
@@ -102,15 +105,11 @@ content %}
     </table>
   </div>
   <div class="sidenav">
-    <div class="remove_courses">
-      <h2>Remove booking</h2>
-      <form action="/delete_booking" method="post" onsubmit="return showPopup(event)">
-        <label for="booking_id">Course ID:</label>
-        <input type="text" id="booking_id" name="booking_id" required />
-        <button type="submit">Remove booked assesment</button>
-      </form>
+    <div class="empty" style="color: #ffffff;">
+      <br>
+      <br>
+      <br>
     </div>
-
     <div class="remove_users">
       <h2>Remove User</h2>
       <form action="/delete_user" method="post" onsubmit="return showPopup(event)">
@@ -119,6 +118,17 @@ content %}
         <button type="submit">Remove User</button>
       </form>
     </div>
+
+    <div class="remove_booking">
+      <h2>Remove Booking</h2>
+      <form action="/delete_booking" method="post" onsubmit="return showPopup(event)">
+        <label for="booking_id">Booking ID:</label>
+        <input type="text" id="booking_id" name="booking_id" required />
+        <button type="submit">Remove booked assessment</button>
+      </form>
+    </div>
+  </div>
+
     <div class="booking_form">
       <h2>Add New Booking</h2>
       <form action="/add_booking" method="post" onsubmit="return showPopup(event)">
@@ -134,14 +144,16 @@ content %}
       <button type="submit">Add Booking</button>
       </form>
     </div>
-  </div>
   <p>Link to weather API service: <a href="https://www.weatherapi.com/my/"
       target="_blank">https://www.weatherapi.com/my/</a></p>
+    
+    <div class="remove_courses">
+      <h2>Remove booking</h2>
 
+    </div>
   <!-- script for pop up -->
-  <script>
-    function showPopup(event) {
-      event.preventDefault();
+  <!-- <script>
+      if (!form) return;
       let form = event.target;
       let formData = new FormData(form);
       let action = form.action;
@@ -163,7 +175,8 @@ content %}
         });
 
       return false;
-    }
+      if (!alertBox) return;
+      alertBox.textContent = message;
 
     function showAlert(message, color) {
       let alertBox = document.createElement('div');
@@ -181,7 +194,7 @@ content %}
         alertBox.remove();
       }, 3000);
     }
-  </script>
+  </script> -->
 </body>
 
 {% endblock %}
