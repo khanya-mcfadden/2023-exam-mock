@@ -16,12 +16,14 @@ import requests
 from werkzeug.security import generate_password_hash, check_password_hash
 import re
 from dotenv import load_dotenv
-load_dotenv() 
+
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY', 'default_secret_key')
-app.config['SECRET_KEY'] = app.secret_key
-app.config['DATABASE_URL'] = os.getenv('DATABASE_URL')
+app.secret_key = os.getenv("SECRET_KEY", "default_secret_key")
+app.config["SECRET_KEY"] = app.secret_key
+app.config["DATABASE_URL"] = os.getenv("DATABASE_URL")
+
 
 # Ensure the table is created when the app starts
 def init_db():
@@ -72,9 +74,10 @@ def inject_user():
         "admin": session.get("admin", False),
     }
 
-@app.route('/')
+
+@app.route("/")
 def index():
-    return render_template('index.html', secret_key=app.config['SECRET_KEY'])
+    return render_template("index.html", secret_key=app.config["SECRET_KEY"])
 
 
 @app.route("/BookingPage", methods=["GET", "POST"])
@@ -123,7 +126,9 @@ def BookingPage_page():
     # Fetch available assessors from the database
     connection = sqlite3.connect("user.db")
     cursor = connection.cursor()
-    cursor.execute("SELECT name FROM assesor WHERE is_available = 1")  # Adjust table/column names as needed
+    cursor.execute(
+        "SELECT name FROM assesor WHERE is_available = 1"
+    )  # Adjust table/column names as needed
     assessors = cursor.fetchall()
     connection.close()
 
@@ -131,6 +136,7 @@ def BookingPage_page():
     return render_template(
         "BookingPage.html", assessors=[assessor[0] for assessor in assessors]
     )
+
 
 @app.route("/unfinishedpagepage", methods=["GET", "POST"])
 def unfinishedpage_page():
@@ -643,7 +649,10 @@ def get_Ai():
             "humidity",
             "climate",
         ]
-        return any(keyword in response.lower() for keyword in health_keywords + weather_keywords)
+        return any(
+            keyword in response.lower()
+            for keyword in health_keywords + weather_keywords
+        )
 
     # Filter the response
     if is_relevant_response(response_text):
@@ -665,15 +674,16 @@ def get_Ai():
 def articles_page():
     return render_template("articles.html")
 
+
 @app.route("/policy_page")
 def policy_page():
     return render_template("policy.html")
+
 
 # articles
 @app.route("/articles/global-warming-on-the-rise")
 def global_warming_article():
     return render_template("global_warming_rise.html")
-
 
 
 @app.route("/articles/how-to-deal-with-the-winter-season-part-1")
@@ -684,7 +694,6 @@ def winter_article_part1():
 @app.route("/articles/how-to-deal-with-the-winter-season-part-2")
 def winter_article_part2():
     return render_template("winter-season-part-2.html")
-
 
 
 # Error handler for 404
