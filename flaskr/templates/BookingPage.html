@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <form method="POST" action="/BookingPage">
+    <form id="booking-form" method="POST" action="/BookingPage">
         <h1>Book an assessment!</h1>
         <p style="font-size: 25px;">Welcome to our booking page! Please select an assessor and date to make a reservation:</p>
         <ul style="list-style: none; padding: 0;">
@@ -31,42 +31,46 @@
         </ul>
         <button type="submit">Book Now</button>
     </form>
-
     <script>
-        const form = document.querySelector('form');
-
-        if (form) {
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const assesor = document.getElementById('assesor').value;
-                const date = document.getElementById('date').value;
-                const time = document.getElementById('time').value;
-
-                if (!assesor || !date || !time) {
-                    alert('Please fill in all fields before submitting.');
-                    return;
-                }
-
-                const formAction = form.getAttribute('action');
-                const response = await fetch(formAction, {
-                    method: 'POST',
-                    body: new FormData(form)
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('booking-form');
+        
+            if (form) {
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const assesor = document.getElementById('assesor').value;
+                    const date = document.getElementById('date').value;
+                    const time = document.getElementById('time').value;
+        
+                    console.log('Assessor:', assesor);
+                    console.log('Date:', date);
+                    console.log('Time:', time);
+        
+                    if (!assesor || !date || !time) {
+                        alert('Please fill in all fields before submitting.');
+                        return;
+                    }
+        
+                    const formAction = form.getAttribute('action');
+                    const response = await fetch(formAction, {
+                        method: 'POST',
+                        body: new FormData(form)
+                    });
+        
+                    if (!response.ok) {
+                        const message = await response.text();
+                        const overlay = document.createElement('div');
+                        overlay.style.cssText = 'position:fixed; top:20px; left:50%; transform:translateX(-50%); background:rgba(255,0,0,0.8); color:white; padding:15px; border-radius:5px; z-index:1000;';
+                        overlay.textContent = message;
+                        document.body.appendChild(overlay);
+                        setTimeout(() => overlay.remove(), 3000);
+                    } else {
+                        window.location.href = '/booking_confirm';
+                    }
                 });
-
-                if (!response.ok) {
-                    const message = await response.text();
-                    const overlay = document.createElement('div');
-                    overlay.style.cssText = 'position:fixed; top:20px; left:50%; transform:translateX(-50%); background:rgba(255,0,0,0.8); color:white; padding:15px; border-radius:5px; z-index:1000;';
-                    overlay.textContent = message;
-                    document.body.appendChild(overlay);
-                    setTimeout(() => overlay.remove(), 3000);
-                } else {
-                    window.location.href = '/booking_confirm';
-                }
-            });
-        }
+            }
+        });
     </script>
 </body>
-
-</html>
 {% endblock %}
+</html>
